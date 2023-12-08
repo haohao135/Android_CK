@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/movie_manager" android:title="Quản lí phim" android:icon="@drawable/script"/>
+    <item android:id="@+id/theater_manager" android:title="Quản lí rạp" android:icon="@drawable/performance"/>
+    <item android:id="@+id/ticket_manager" android:title="Quản lí vé" android:icon="@drawable/income"/>
+    <item android:id="@+id/account_manager" android:title="Quản lí tài khoản" android:icon="@drawable/consultant"/>
+</menu>

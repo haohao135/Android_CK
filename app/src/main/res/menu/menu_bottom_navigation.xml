@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Phim" android:id="@+id/list_movie" android:icon="@drawable/menu1"/>
+    <item android:title="Rạp" android:id="@+id/list_theater" android:icon="@drawable/menu2"/>
+    <item android:title="Tài khoản" android:id="@+id/user" android:icon="@drawable/menu3"/>
+
+</menu>
