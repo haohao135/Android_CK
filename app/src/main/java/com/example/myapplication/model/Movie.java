@@ -2,9 +2,12 @@ package com.example.myapplication.model;
 
 import android.widget.ImageView;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Movie {
+import kotlin.jvm.internal.PackageReference;
+
+public class Movie implements Serializable {
     private String id;
     private String title;
     private String image;
@@ -13,12 +16,13 @@ public class Movie {
     private String director;
     private String genre;
     private String description;
+    private String trailer;
     List<Showtime> showtimeList;
 
     public Movie() {
     }
 
-    public Movie(String id, String title, String image, double price, String duration, String director, String genre, String description) {
+    public Movie(String id, String title, String image, double price, String duration, String director, String genre, String description, String trailer) {
         this.id = id;
         this.title = title;
         this.image = image;
@@ -27,6 +31,23 @@ public class Movie {
         this.director = director;
         this.genre = genre;
         this.description = description;
+        this.trailer = trailer;
+    }
+
+    public String getTrailer() {
+        return trailer;
+    }
+
+    public List<Showtime> getShowtimeList() {
+        return showtimeList;
+    }
+
+    public void setShowtimeList(List<Showtime> showtimeList) {
+        this.showtimeList = showtimeList;
+    }
+
+    public void setTrailer(String trailer) {
+        this.trailer = trailer;
     }
 
     public double getPrice() {

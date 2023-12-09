@@ -40,6 +40,7 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/movieName"
                 android:background="@drawable/edittext_border"
                 android:layout_width="230dp"
                 android:layout_height="30dp"
@@ -67,6 +68,7 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/movieImage"
                 android:background="@drawable/edittext_border"
                 android:layout_width="230dp"
                 android:layout_height="30dp"
@@ -93,6 +95,7 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/moviePrice"
                 android:background="@drawable/edittext_border"
                 android:layout_width="230dp"
                 android:layout_height="30dp"
@@ -121,6 +124,7 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/movieDuration"
                 android:background="@drawable/edittext_border"
                 android:layout_width="230dp"
                 android:layout_height="30dp"
@@ -149,6 +153,7 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/movieDirector"
                 android:background="@drawable/edittext_border"
                 android:layout_width="230dp"
                 android:layout_height="30dp"
@@ -176,6 +181,7 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/movieGenre"
                 android:background="@drawable/edittext_border"
                 android:layout_width="230dp"
                 android:layout_height="30dp"
@@ -196,7 +202,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mô tả"
+            android:text="Giới thiệu"
             android:textColor="@color/red"
             android:textSize="20dp" />
         <RelativeLayout
@@ -204,6 +210,7 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/movieTrailer"
                 android:background="@drawable/edittext_border"
                 android:layout_width="230dp"
                 android:layout_height="30dp"
@@ -211,7 +218,37 @@
         </RelativeLayout>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mô tả"
+            android:textColor="@color/red"
+            android:textSize="20dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/movieDescription"
+                android:layout_width="230dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/edittext_border" />
+        </RelativeLayout>
+    </LinearLayout>
+
     <Button
+        android:id="@+id/save"
         android:layout_width="150dp"
         android:layout_height="55dp"
         android:layout_marginTop="88dp"
@@ -223,6 +260,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
 
     <Button
+        android:id="@+id/back"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"

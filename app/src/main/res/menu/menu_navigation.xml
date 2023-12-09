@@ -3,5 +3,7 @@
     <item android:id="@+id/movie_manager" android:title="Quản lí phim" android:icon="@drawable/script"/>
     <item android:id="@+id/theater_manager" android:title="Quản lí rạp" android:icon="@drawable/performance"/>
     <item android:id="@+id/ticket_manager" android:title="Quản lí vé" android:icon="@drawable/income"/>
+    <item android:id="@+id/showtime_manager" android:title="Quản lí lịch chiếu" android:icon="@drawable/calendar"/>
     <item android:id="@+id/account_manager" android:title="Quản lí tài khoản" android:icon="@drawable/consultant"/>
+    <item android:id="@+id/logout_manager" android:title="Đăng xuất" android:icon="@drawable/exit"/>
 </menu>

@@ -23,9 +23,7 @@
         android:id="@+id/linearLayout7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="44dp"
-        android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,6 +41,7 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/updateMovieName"
                 android:layout_width="230dp"
                 android:layout_height="30dp"
                 android:layout_alignParentRight="true"
@@ -54,9 +53,7 @@
         android:id="@+id/linearLayout8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,6 +71,7 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/updateMovieImage"
                 android:layout_width="230dp"
                 android:layout_height="30dp"
                 android:layout_alignParentRight="true"
@@ -85,9 +83,7 @@
         android:id="@+id/linearLayout9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -105,6 +101,7 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/updateMoviePrice"
                 android:layout_width="230dp"
                 android:layout_height="30dp"
                 android:layout_alignParentRight="true"
@@ -116,9 +113,7 @@
         android:id="@+id/linearLayout10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -136,6 +131,7 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/updateMovieDuration"
                 android:layout_width="230dp"
                 android:layout_height="30dp"
                 android:layout_alignParentRight="true"
@@ -147,9 +143,7 @@
         android:id="@+id/linearLayout11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toStartOf="parent"
@@ -167,6 +161,7 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/updateMovieDirector"
                 android:layout_width="230dp"
                 android:layout_height="30dp"
                 android:layout_alignParentRight="true"
@@ -178,9 +173,7 @@
         android:id="@+id/linearLayout12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -198,6 +191,7 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/updateMovieGenre"
                 android:layout_width="230dp"
                 android:layout_height="30dp"
                 android:layout_alignParentRight="true"
@@ -209,13 +203,40 @@
         android:id="@+id/linearLayout13"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout12">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giới thiệu"
+            android:textColor="@color/red"
+            android:textSize="20dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/updateMovieTrailer"
+                android:layout_width="230dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/edittext_border" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout13">
 
         <TextView
             android:layout_width="wrap_content"
@@ -229,6 +250,7 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/updateMovieDescription"
                 android:layout_width="230dp"
                 android:layout_height="30dp"
                 android:layout_alignParentRight="true"
@@ -237,24 +259,28 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/save"
         android:layout_width="150dp"
         android:layout_height="55dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="16dp"
+
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="4dp"
         android:backgroundTint="@color/red"
         android:text="Lưu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout13" />
 
     <Button
+        android:id="@+id/back"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="96dp"
         android:background="@drawable/rounded_backgroud1"
         android:backgroundTint="@color/white"
         android:text="Thoát"
         android:textColor="@color/red"
+        app:layout_constraintEnd_toStartOf="@+id/save"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout13" />
 </androidx.constraintlayout.widget.ConstraintLayout>

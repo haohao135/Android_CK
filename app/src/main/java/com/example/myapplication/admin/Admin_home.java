@@ -10,19 +10,23 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 
+import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.fragment.Account_Manager_Fragment;
 import com.example.myapplication.fragment.MovieFragment;
 import com.example.myapplication.fragment.Movie_Manager_Fragment;
+import com.example.myapplication.fragment.Showtime_manager_Fragment;
 import com.example.myapplication.fragment.TheaterFragment;
 import com.example.myapplication.fragment.Theater_Manager_Fragment;
 import com.example.myapplication.fragment.Ticket_Manager_Fragment;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Admin_home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
@@ -30,6 +34,7 @@ public class Admin_home extends AppCompatActivity implements NavigationView.OnNa
     private static final int FRAGMENT_THEATER = 2;
     private static final int FRAGMENT_TICKET = 3;
     private static final int FRAGMENT_ACCOUNT = 4;
+    private static final int FRAGMENT_SHOWTIME = 5;
     private int curFragment = FRAGMENT_MOVIE;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +80,16 @@ public class Admin_home extends AppCompatActivity implements NavigationView.OnNa
                 curFragment = FRAGMENT_ACCOUNT;
                 Log.e("TAG", curFragment+"");
             }
+        } else if(item.getItemId()==R.id.showtime_manager){
+            if(curFragment!=FRAGMENT_SHOWTIME){
+                replaceFragment(new Showtime_manager_Fragment());
+                curFragment = FRAGMENT_SHOWTIME;
+                Log.e("TAG", curFragment+"");
+            }
+        } else if(item.getItemId()==R.id.logout_manager){
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            finish();
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
