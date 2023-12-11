@@ -3,6 +3,7 @@ package com.example.myapplication.model;
 import android.widget.ImageView;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import kotlin.jvm.internal.PackageReference;
@@ -18,6 +19,7 @@ public class Movie implements Serializable {
     private String description;
     private String trailer;
     List<Showtime> showtimeList;
+    List<Evaluate> evaluateList;
 
     public Movie() {
     }
@@ -32,6 +34,8 @@ public class Movie implements Serializable {
         this.genre = genre;
         this.description = description;
         this.trailer = trailer;
+        showtimeList = new ArrayList<>();
+        evaluateList = new ArrayList<>();
     }
 
     public String getTrailer() {
@@ -40,6 +44,14 @@ public class Movie implements Serializable {
 
     public List<Showtime> getShowtimeList() {
         return showtimeList;
+    }
+
+    public List<Evaluate> getEvaluateList() {
+        return evaluateList;
+    }
+
+    public void setEvaluateList(List<Evaluate> evaluateList) {
+        this.evaluateList = evaluateList;
     }
 
     public void setShowtimeList(List<Showtime> showtimeList) {

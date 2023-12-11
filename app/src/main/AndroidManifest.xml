@@ -19,6 +19,12 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".activity.UpdateTheater"
+            android:exported="false" />
+        <activity
+            android:name=".activity.AddTheater"
+            android:exported="false" />
+        <activity
             android:name=".activity.UpdateMovie"
             android:exported="false" />
         <activity
@@ -41,9 +47,7 @@
             android:exported="false" />
         <activity
             android:name=".admin.Admin_home"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

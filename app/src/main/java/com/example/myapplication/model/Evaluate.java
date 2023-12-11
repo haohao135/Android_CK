@@ -1,8 +1,11 @@
 package com.example.myapplication.model;
 
-public class Evaluate {
+import java.io.Serializable;
+
+public class Evaluate implements Serializable {
     private String id;
     private int voteRate;
     private String content;
     private String user_id;
+    private String movie_id;
 }
