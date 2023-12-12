@@ -2,6 +2,7 @@ package com.example.myapplication.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -76,6 +77,7 @@ public class MovieFragment extends Fragment {
     ImageView imageView;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    ImageView imageViewBell;
     @SuppressLint("MissingInflatedId")
     ViewFlipper viewFlipper;
     @SuppressLint({"MissingInflatedId", "ResourceType"})
@@ -89,6 +91,14 @@ public class MovieFragment extends Fragment {
         drawerLayout = view.findViewById(R.id.drawerLayout);
         navigationView = view.findViewById(R.id.navigationView);
         imageView = view.findViewById(R.id.iconImageViewMenu);
+        imageViewBell = view.findViewById(R.id.iconImageView);
+
+        imageViewBell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

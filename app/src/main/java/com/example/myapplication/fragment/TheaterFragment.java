@@ -69,6 +69,7 @@ public class TheaterFragment extends Fragment {
     ImageView imageView;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    ImageView imageViewBell;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -79,6 +80,14 @@ public class TheaterFragment extends Fragment {
         drawerLayout = view.findViewById(R.id.drawerLayout1);
         navigationView = view.findViewById(R.id.navigationView1);
         imageView = view.findViewById(R.id.iconImageViewMenu1);
+        imageViewBell = view.findViewById(R.id.iconImageView1);
+
+        imageViewBell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -68,7 +68,7 @@ public class UpdateMovie extends AppCompatActivity {
                 String trailer = movieTrailer.getText().toString().trim();
                 String description = movieDescription.getText().toString().trim();
 
-                Movie movie1 = new Movie(movie.getId(), name, image, price, duration, director, genre, trailer, description);
+                Movie movie1 = new Movie(movie.getId(), name, image, price, duration, director, genre, description, trailer);
                 updateMovieInFirestore(movie1);
             }
         });

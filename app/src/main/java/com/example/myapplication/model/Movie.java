@@ -20,6 +20,7 @@ public class Movie implements Serializable {
     private String trailer;
     List<Showtime> showtimeList;
     List<Evaluate> evaluateList;
+    List<Actor> actorList;
 
     public Movie() {
     }
@@ -36,6 +37,15 @@ public class Movie implements Serializable {
         this.trailer = trailer;
         showtimeList = new ArrayList<>();
         evaluateList = new ArrayList<>();
+        actorList = new ArrayList<>();
+    }
+
+    public List<Actor> getActorList() {
+        return actorList;
+    }
+
+    public void setActorList(List<Actor> actorList) {
+        this.actorList = actorList;
     }
 
     public String getTrailer() {

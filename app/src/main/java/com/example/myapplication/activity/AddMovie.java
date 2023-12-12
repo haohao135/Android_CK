@@ -62,7 +62,7 @@ public class AddMovie extends AppCompatActivity {
                 String genre = movieGenre.getText().toString().trim();
                 String trailer = movieTrailer.getText().toString().trim();
                 String description = movieDescription.getText().toString().trim();
-                Movie movie = new Movie(id, title, image, price, duration, director, genre, trailer, description);
+                Movie movie = new Movie(id, title, image, price, duration, director, genre, description, trailer);
                 db.collection("movies").document(movie.getId()).set(movie)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override

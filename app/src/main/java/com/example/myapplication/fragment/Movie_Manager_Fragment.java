@@ -97,7 +97,7 @@ public class Movie_Manager_Fragment extends Fragment {
         movieList = new ArrayList<>();
         loadDataFromFirestore();
 
-        adapter = new MovieManagerAdapter(movieList);
+        adapter = new MovieManagerAdapter(getContext(), movieList);
 
         recyclerView = view.findViewById(R.id.rcvMovieManager);
         recyclerView.setAdapter(adapter);

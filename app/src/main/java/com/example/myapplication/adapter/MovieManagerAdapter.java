@@ -1,6 +1,9 @@
 package com.example.myapplication.adapter;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -12,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.activity.MovieDetails;
 import com.example.myapplication.fragment.Movie_Manager_Fragment;
 import com.example.myapplication.model.Movie;
 
@@ -19,8 +23,10 @@ import java.util.List;
 
 public class MovieManagerAdapter extends RecyclerView.Adapter<MovieManagerAdapter.ViewHolder> {
     List<Movie> movieList;
+    Context context;
 
-    public MovieManagerAdapter(List<Movie> movieList) {
+    public MovieManagerAdapter(Context context,  List<Movie> movieList) {
+        this.context = context;
         this.movieList = movieList;
     }
 
@@ -41,6 +47,17 @@ public class MovieManagerAdapter extends RecyclerView.Adapter<MovieManagerAdapte
         holder.price.setText(String.valueOf(movie.getPrice()));
         holder.director.setText(movie.getDirector());
         holder.duration.setText(movie.getDuration());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String id = movieList.get(position).getId();
+                if(!id.equals("")){
+                    Movie_Manager_Fragment.clickMoviePosition = id;
+                    goToDetail(movieList.get(position));
+                }
+            }
+        });
         holder.itemView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
             @Override
             public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
@@ -49,6 +66,14 @@ public class MovieManagerAdapter extends RecyclerView.Adapter<MovieManagerAdapte
                 inflater.inflate(R.menu.menu_context_account, menu);
             }
         });
+    }
+
+    private void goToDetail(Movie movie) {
+        Intent intent = new Intent(context, MovieDetails.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Object", movie);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
     }
 
     @Override

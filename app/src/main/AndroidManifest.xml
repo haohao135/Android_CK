@@ -19,6 +19,15 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".activity.UpdateActor"
+            android:exported="false" />
+        <activity
+            android:name=".activity.AddActor"
+            android:exported="false" />
+        <activity
+            android:name=".activity.MovieDetails"
+            android:exported="false" />
+        <activity
             android:name=".activity.UpdateTheater"
             android:exported="false" />
         <activity
