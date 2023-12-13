@@ -19,6 +19,12 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".activity.UpdateShowtime"
+            android:exported="false" />
+        <activity
+            android:name=".activity.AddShowtime"
+            android:exported="false" />
+        <activity
             android:name=".activity.UpdateActor"
             android:exported="false" />
         <activity

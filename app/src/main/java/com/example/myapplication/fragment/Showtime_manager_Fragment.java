@@ -1,14 +1,23 @@
 package com.example.myapplication.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.myapplication.R;
+import com.example.myapplication.activity.AddShowtime;
+import com.example.myapplication.model.Theater;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,11 +65,55 @@ public class Showtime_manager_Fragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
+    RecyclerView recyclerView;
+    Button addShowtime;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_showtime_manager, container, false);
+        View view = inflater.inflate(R.layout.fragment_showtime_manager, container, false);
+
+        recyclerView = view.findViewById(R.id.recyclerViewShowtime);
+        addShowtime = view.findViewById(R.id.btnAddShowtime);
+
+        addShowtime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), AddShowtime.class);
+                startActivityForResult(intent, 1001);
+            }
+        });
+        return view;
+    }
+
+//    public void loadDataFromFirestore() {
+//        theaterList.clear();
+//        CollectionReference moviesRef = db.collection("theaters");
+//
+//        moviesRef.get().addOnCompleteListener(task -> {
+//            if (task.isSuccessful()) {
+//                QuerySnapshot querySnapshot = task.getResult();
+//                if (querySnapshot != null) {
+//                    for (QueryDocumentSnapshot document : querySnapshot) {
+//                        Theater theater = document.toObject(Theater.class);
+//                        theaterList.add(theater);
+//                        adapter.notifyDataSetChanged();
+//                    }
+//                }
+//            } else {
+//
+//            }
+//        });
+//    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode == 1001 && resultCode == -1){
+
+        }
+        if(requestCode == 1002 && resultCode == -1){
+
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
