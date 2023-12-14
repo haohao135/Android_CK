@@ -22,6 +22,7 @@ import android.widget.ViewFlipper;
 import com.example.myapplication.R;
 import com.example.myapplication.activity.Buy_ticket;
 import com.example.myapplication.activity.List_movie;
+import com.example.myapplication.activity.ViewShowtime;
 import com.google.android.material.navigation.NavigationView;
 
 /**
@@ -117,6 +118,8 @@ public class MovieFragment extends Fragment {
                     startActivity(new Intent(getContext(), List_movie.class));
                 } else if (itemId == R.id.buy_ticket) {
                     startActivity(new Intent(getContext(), Buy_ticket.class));
+                } else if (itemId == R.id.showtime) {
+                    startActivity(new Intent(getContext(), ViewShowtime.class));
                 }
                 return true;
             }
