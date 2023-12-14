@@ -81,9 +81,7 @@ public class AddShowtime extends AppCompatActivity {
                 String date = Edate.getText().toString().trim();
                 String startime = Estartime.getText().toString().trim();
                 String endtime = Eendtime.getText().toString().trim();
-                Log.e("TAG", "onClick: ");
                 getMovieIdByName(nameMovie.getText().toString());
-                Log.e("TAG", "onClick2: ");
                 getTheaterIdByName(nameTheater.getText().toString());
                 Handler handler = new Handler();
                 handler.postDelayed(() -> {
@@ -142,8 +140,7 @@ public class AddShowtime extends AppCompatActivity {
                     for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                         movieId = documentSnapshot.getId();
                     }
-                })
-                .addOnFailureListener(e -> Log.e("TAG", "getMovieIdByName3: " + movieId));;
+                });
     }
 
     public void getTheaterIdByName(String name) {

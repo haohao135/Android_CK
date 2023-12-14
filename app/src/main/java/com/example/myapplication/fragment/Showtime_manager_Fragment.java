@@ -3,21 +3,35 @@ package com.example.myapplication.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.myapplication.R;
 import com.example.myapplication.activity.AddShowtime;
+import com.example.myapplication.activity.UpdateShowtime;
+import com.example.myapplication.activity.UpdateTheater;
+import com.example.myapplication.adapter.ShowtimeManagerAdapter;
+import com.example.myapplication.model.Showtime;
 import com.example.myapplication.model.Theater;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -67,6 +81,10 @@ public class Showtime_manager_Fragment extends Fragment {
     }
     RecyclerView recyclerView;
     Button addShowtime;
+    List<Showtime> showtimeList;
+    ShowtimeManagerAdapter adapter;
+    FirebaseFirestore db;
+    public static String showtimePosition;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -75,6 +93,14 @@ public class Showtime_manager_Fragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recyclerViewShowtime);
         addShowtime = view.findViewById(R.id.btnAddShowtime);
+        db = FirebaseFirestore.getInstance();
+        showtimeList = new ArrayList<>();
+        loadDataFromFirestore();
+        adapter = new ShowtimeManagerAdapter(showtimeList);
+        recyclerView.setAdapter(adapter);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
+        recyclerView.addItemDecoration(dividerItemDecoration);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
         addShowtime.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,34 +112,76 @@ public class Showtime_manager_Fragment extends Fragment {
         return view;
     }
 
-//    public void loadDataFromFirestore() {
-//        theaterList.clear();
-//        CollectionReference moviesRef = db.collection("theaters");
-//
-//        moviesRef.get().addOnCompleteListener(task -> {
-//            if (task.isSuccessful()) {
-//                QuerySnapshot querySnapshot = task.getResult();
-//                if (querySnapshot != null) {
-//                    for (QueryDocumentSnapshot document : querySnapshot) {
-//                        Theater theater = document.toObject(Theater.class);
-//                        theaterList.add(theater);
-//                        adapter.notifyDataSetChanged();
-//                    }
-//                }
-//            } else {
-//
-//            }
-//        });
-//    }
+    public void loadDataFromFirestore() {
+        showtimeList.clear();
+        CollectionReference moviesRef = db.collection("showtimes");
+
+        moviesRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                QuerySnapshot querySnapshot = task.getResult();
+                if (querySnapshot != null) {
+                    for (QueryDocumentSnapshot document : querySnapshot) {
+                        Showtime showtime = document.toObject(Showtime.class);
+                        showtimeList.add(showtime);
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+            } else {
+
+            }
+        });
+    }
+
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.editAccount){
+            if(!showtimePosition.equals("null")){
+                for(Showtime showtime : showtimeList){
+                    if(showtime.getId() == showtimePosition){
+                        Intent intent1 = new Intent(getContext(), UpdateShowtime.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("Showtime", showtime);
+                        intent1.putExtras(bundle);
+                        startActivityForResult(intent1, 1002);
+                    }
+                }
+            }
+        }
+        if(item.getItemId() == R.id.deleteAccount){
+            if(!showtimePosition.equals("null")){
+                deleteShowtimeFromFirestore(showtimePosition);
+            }
+        }
+        return super.onContextItemSelected(item);
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(requestCode == 1001 && resultCode == -1){
-
+            loadDataFromFirestore();
         }
         if(requestCode == 1002 && resultCode == -1){
-
+            loadDataFromFirestore();
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void deleteShowtimeFromFirestore(String id) {
+        CollectionReference theatersRef = db.collection("showtimes");
+        theatersRef.document(id)
+                .delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        loadDataFromFirestore();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
     }
 }
