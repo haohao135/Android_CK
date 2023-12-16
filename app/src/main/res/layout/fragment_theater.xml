@@ -56,6 +56,11 @@
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewTheater"
+                android:layout_below="@+id/linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
         </RelativeLayout>
 
     </FrameLayout>

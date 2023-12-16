@@ -7,6 +7,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -19,7 +22,17 @@ import com.example.myapplication.R;
 import com.example.myapplication.activity.Buy_ticket;
 import com.example.myapplication.activity.List_movie;
 import com.example.myapplication.activity.ViewShowtime;
+import com.example.myapplication.adapter.TheaterAdapter;
+import com.example.myapplication.model.Movie;
+import com.example.myapplication.model.Theater;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -67,21 +80,35 @@ public class TheaterFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+    FirebaseFirestore db;
     ImageView imageView;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ImageView imageViewBell;
+    List<Theater> theaterList;
+    TheaterAdapter adapter;
+    RecyclerView recyclerView;
+    public static String theaterPosition;
 
     @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_theater, container, false);
-
+        db = FirebaseFirestore.getInstance();
         drawerLayout = view.findViewById(R.id.drawerLayout1);
         navigationView = view.findViewById(R.id.navigationView1);
         imageView = view.findViewById(R.id.iconImageViewMenu1);
         imageViewBell = view.findViewById(R.id.iconImageView1);
+        recyclerView = view.findViewById(R.id.recyclerViewTheater);
+
+        theaterList = new ArrayList<>();
+        loadDataFromFirestore();
+        adapter = new TheaterAdapter(theaterList, getContext());
+        recyclerView.setAdapter(adapter);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
+        recyclerView.addItemDecoration(dividerItemDecoration);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
         imageViewBell.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,5 +141,24 @@ public class TheaterFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    public void loadDataFromFirestore() {
+        theaterList.clear();
+        CollectionReference moviesRef = db.collection("theaters");
+        moviesRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                QuerySnapshot querySnapshot = task.getResult();
+                if (querySnapshot != null) {
+                    for (QueryDocumentSnapshot document : querySnapshot) {
+                        Theater theater = document.toObject(Theater.class);
+                        theaterList.add(theater);
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+            } else {
+
+            }
+        });
     }
 }

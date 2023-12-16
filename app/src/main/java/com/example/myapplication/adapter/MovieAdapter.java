@@ -42,7 +42,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
 
     @Override
     public int getItemCount() {
-        if(!userList.isEmpty()){
+        if(userList!=null){
             return userList.size();
         }
         return 0;

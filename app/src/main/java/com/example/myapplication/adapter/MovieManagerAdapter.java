@@ -78,7 +78,7 @@ public class MovieManagerAdapter extends RecyclerView.Adapter<MovieManagerAdapte
 
     @Override
     public int getItemCount() {
-        if(!movieList.isEmpty()){
+        if(movieList!=null){
             return movieList.size();
         }
         return 0;
