@@ -86,13 +86,24 @@
                         android:layout_height="match_parent"/>
                 </ViewFlipper>
             </androidx.cardview.widget.CardView>
+
             <TextView
-                android:layout_margin="20dp"
-                android:textSize="20dp"
-                android:textColor="@color/red"
-                android:layout_below="@id/cardView"
-                android:text="Phim Hot Hôm Nay"
+                android:id="@+id/tit"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cardView"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="Phim Hot Hôm Nay"
+                android:textColor="@color/red"
+                android:textSize="20dp" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginStart="8dp"
+                android:id="@+id/recyclerViewShowtimeMovieFragment"
+                android:layout_below="@+id/tit"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </RelativeLayout>
 

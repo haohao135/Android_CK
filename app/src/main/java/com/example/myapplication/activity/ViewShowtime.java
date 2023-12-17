@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.adapter.ShowtimeAdapter;
@@ -24,6 +26,7 @@ public class ViewShowtime extends AppCompatActivity {
     FirebaseFirestore db;
     List<Showtime> showtimeList;
     ShowtimeAdapter adapter;
+    ImageView back;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,7 @@ public class ViewShowtime extends AppCompatActivity {
         setContentView(R.layout.activity_view_showtime);
         db = FirebaseFirestore.getInstance();
         recyclerView = findViewById(R.id.recyclerViewShowtime1);
+        back = findViewById(R.id.backViewShowtime);
 
         showtimeList = new ArrayList<>();
         loadDataFromFirestore();
@@ -39,6 +43,13 @@ public class ViewShowtime extends AppCompatActivity {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getBaseContext(), DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
         recyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, false));
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public void loadDataFromFirestore() {

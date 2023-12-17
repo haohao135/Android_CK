@@ -8,6 +8,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,7 +26,16 @@ import com.example.myapplication.R;
 import com.example.myapplication.activity.Buy_ticket;
 import com.example.myapplication.activity.List_movie;
 import com.example.myapplication.activity.ViewShowtime;
+import com.example.myapplication.adapter.ShowtimeHomeAdapter;
+import com.example.myapplication.model.Showtime;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -76,8 +88,12 @@ public class MovieFragment extends Fragment {
 
     public static boolean login_status = false;
     ImageView imageView;
+    RecyclerView recyclerView;
+    ShowtimeHomeAdapter adapter;
+    List<Showtime> showtimeList;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    FirebaseFirestore db;
     ImageView imageViewBell;
     @SuppressLint("MissingInflatedId")
     ViewFlipper viewFlipper;
@@ -86,6 +102,7 @@ public class MovieFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_movie, container, false);
+        db = FirebaseFirestore.getInstance();
         viewFlipper = view.findViewById(R.id.viewFlipper);
         viewFlipper.setFlipInterval(3000);
         viewFlipper.setAutoStart(true);
@@ -93,6 +110,15 @@ public class MovieFragment extends Fragment {
         navigationView = view.findViewById(R.id.navigationView);
         imageView = view.findViewById(R.id.iconImageViewMenu);
         imageViewBell = view.findViewById(R.id.iconImageView);
+        recyclerView = view.findViewById(R.id.recyclerViewShowtimeMovieFragment);
+
+        showtimeList = new ArrayList<>();
+        loadDataFromFirestore();
+        adapter = new ShowtimeHomeAdapter(showtimeList, getContext());
+        recyclerView.setAdapter(adapter);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.HORIZONTAL);
+        recyclerView.addItemDecoration(dividerItemDecoration);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
         imageViewBell.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,5 +151,24 @@ public class MovieFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    public void loadDataFromFirestore() {
+        showtimeList.clear();
+        CollectionReference moviesRef = db.collection("showtimes");
+        moviesRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                QuerySnapshot querySnapshot = task.getResult();
+                if (querySnapshot != null) {
+                    for (QueryDocumentSnapshot document : querySnapshot) {
+                        Showtime showtime = document.toObject(Showtime.class);
+                        showtimeList.add(showtime);
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+            } else {
+
+            }
+        });
     }
 }
