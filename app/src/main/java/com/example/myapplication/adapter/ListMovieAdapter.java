@@ -41,7 +41,7 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Picasso.with(context)
                 .load(movieList.get(position).getImage())
                 .placeholder(R.mipmap.ic_launcher)
@@ -49,6 +49,15 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.View
         holder.name.setText(movieList.get(position).getTitle());
         holder.price.setText(String.valueOf(movieList.get(position).getPrice()));
         holder.genre.setText(movieList.get(position).getGenre());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String id = movieList.get(position).getId();
+                if(!id.equals("")){
+
+                }
+            }
+        });
 
         holder.imageView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
             @Override

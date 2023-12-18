@@ -39,6 +39,7 @@ public class List_movie extends AppCompatActivity {
     FirebaseFirestore db;
     ArrayAdapter<String> adapterSpinner;
     List<String> genre;
+    public static String moviePosition;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -70,6 +70,7 @@
                     app:shapeAppearanceOverlay="@style/Circular"
                     />
                 <TextView
+                    android:id="@+id/HelloName"
                     android:textSize="20dp"
                     android:textColor="@color/red"
                     android:text="Xin chào..."

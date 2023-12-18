@@ -25,6 +25,11 @@ import com.example.myapplication.activity.List_movie;
 import com.example.myapplication.activity.ViewShowtime;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -72,19 +77,29 @@ public class UserFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+    TextView helloName;
     ImageView imageView;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     TextView logout;
+    FirebaseFirestore db;
     @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user, container, false);
+        db = FirebaseFirestore.getInstance();
         drawerLayout = view.findViewById(R.id.drawerLayout2);
         navigationView = view.findViewById(R.id.navigationView2);
         imageView = view.findViewById(R.id.iconImageViewMenu2);
         logout = view.findViewById(R.id.logout);
+        helloName = view.findViewById(R.id.HelloName);
+
+        if(MovieFragment.login_status==true){
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            getUserNameById(user.getUid());
+        }
+
         logout.setMovementMethod(LinkMovementMethod.getInstance());
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,5 +141,20 @@ public class UserFragment extends Fragment {
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(getActivity().getApplicationContext(), MainActivity.class));
         getActivity().finish();
+    }
+
+    public void getUserNameById(String id) {
+        CollectionReference moviesCollectionRef = db.collection("Users");
+        Query query = moviesCollectionRef.whereEqualTo("id", id);
+        query.get().addOnSuccessListener(queryDocumentSnapshots -> {
+            for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                String s = documentSnapshot.getString("username");
+                updateHelloName(s);
+            }
+        });
+    }
+
+    private void updateHelloName(String name) {
+        helloName.setText(name);
     }
 }

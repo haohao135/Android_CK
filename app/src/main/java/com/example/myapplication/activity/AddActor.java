@@ -11,6 +11,7 @@ import android.widget.EditText;
 
 import com.example.myapplication.R;
 import com.example.myapplication.model.Actor;
+import com.example.myapplication.model.Theater;
 
 import org.checkerframework.checker.units.qual.A;
 
