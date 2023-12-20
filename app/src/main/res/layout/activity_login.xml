@@ -49,6 +49,7 @@
             android:background="@android:color/transparent"
             android:drawableStart="@drawable/mail"
             android:drawablePadding="8dp"
+            android:text="guess@gmail.com"
             android:hint="Tài khoản email"
             android:padding="8dp" />
 
@@ -72,6 +73,7 @@
             android:background="@android:color/transparent"
             android:drawableStart="@drawable/padlock"
             android:drawablePadding="8dp"
+            android:text="123456"
             android:hint="Mật khẩu"
             android:padding="8dp"
             tools:layout_editor_absoluteX="55dp"

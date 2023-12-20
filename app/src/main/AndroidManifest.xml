@@ -37,6 +37,9 @@
             android:name=".activity.MovieDetails"
             android:exported="false" />
         <activity
+            android:name=".activity.UserMovieDetails"
+            android:exported="false" />
+        <activity
             android:name=".activity.UpdateTheater"
             android:exported="false" />
         <activity
@@ -62,6 +65,9 @@
             android:exported="false" />
         <activity
             android:name=".activity.List_movie"
+            android:exported="false" />
+        <activity
+            android:name=".activity.User_List_movie"
             android:exported="false" />
         <activity
             android:name=".admin.Admin_home"

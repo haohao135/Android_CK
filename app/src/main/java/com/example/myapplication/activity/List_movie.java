@@ -1,15 +1,18 @@
 package com.example.myapplication.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -30,12 +33,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class List_movie extends AppCompatActivity {
+    public static String clickMoviePosition;
     Spinner chooseGenre;
     ImageView back;
     EditText search;
     RecyclerView recyclerView;
     List<Movie> movieList;
     ListMovieAdapter adapter;
+
     FirebaseFirestore db;
     ArrayAdapter<String> adapterSpinner;
     List<String> genre;
@@ -62,12 +67,16 @@ public class List_movie extends AppCompatActivity {
         genre.add("Kinh dị");
         genre.add("Hài hước");
         genre.add("Viễn tưởng");
+
         loadDataFromFirestore();
         adapter = new ListMovieAdapter(movieList, getBaseContext());
+
         adapterSpinner = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, genre);
         adapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         recyclerView.setAdapter(adapter);
+
+
         chooseGenre.setAdapter(adapterSpinner);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getBaseContext(), DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
@@ -117,7 +126,6 @@ public class List_movie extends AppCompatActivity {
             }
         });
     }
-
     @SuppressLint("NotifyDataSetChanged")
     private void searchMovies(String searchText) {
         String convertedString =
@@ -152,7 +160,7 @@ public class List_movie extends AppCompatActivity {
                     }
                 }
             } else {
-
+                Log.d("TAG", "Failed to retrieve data from Firstore");
             }
         });
     }

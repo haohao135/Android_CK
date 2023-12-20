@@ -21,6 +21,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.adapter.ActorAdapter;
 import com.example.myapplication.model.Actor;
 import com.example.myapplication.model.Movie;
+
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -51,6 +52,7 @@ public class MovieDetails extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewActor);
         back = findViewById(R.id.backToListMovie);
         add = findViewById(R.id.addActor);
+
         movie = (Movie) getIntent().getExtras().get("Object");
         name.setText(movie.getTitle());
 
@@ -60,8 +62,8 @@ public class MovieDetails extends AppCompatActivity {
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getBaseContext(), DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
         loadActorFromFirestore();
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,31 +138,31 @@ public class MovieDetails extends AppCompatActivity {
     public void loadActorFromFirestore() {
         CollectionReference studentsCollectionRef = db.collection("movies");
         studentsCollectionRef.get()
-                .addOnSuccessListener(querySnapshot -> {
-                    for (QueryDocumentSnapshot document : querySnapshot) {
-                        if (document.getId().equals(movie.getId())) {
-                            if (document.contains("actorList")) {
-                                List<Object> certificateRefs = (List<Object>) document.get("actorList");
-                                if(certificateRefs!=null){
-                                    movie.getActorList().clear();
-                                    for (Object certificateObj : certificateRefs) {
-                                        if (certificateObj instanceof Map) {
-                                            Map<String, Object> certificateData = (Map<String, Object>) certificateObj;
-                                            String certificateName = (String) certificateData.get("actorName");
-                                            String id = (String) certificateData.get("id");
-                                            Actor c = new Actor(id, certificateName, movie.getId());
-                                            movie.getActorList().add(c);
-                                        }
+            .addOnSuccessListener(querySnapshot -> {
+                for (QueryDocumentSnapshot document : querySnapshot) {
+                    if (document.getId().equals(movie.getId())) {
+                        if (document.contains("actorList")) {
+                            List<Object> certificateRefs = (List<Object>) document.get("actorList");
+                            if(certificateRefs!=null){
+                                movie.getActorList().clear();
+                                for (Object certificateObj : certificateRefs) {
+                                    if (certificateObj instanceof Map) {
+                                        Map<String, Object> certificateData = (Map<String, Object>) certificateObj;
+                                        String certificateName = (String) certificateData.get("actorName");
+                                        String id = (String) certificateData.get("id");
+                                        Actor c = new Actor(id, certificateName, movie.getId());
+                                        movie.getActorList().add(c);
                                     }
                                 }
                             }
                         }
                     }
-                    adapter.notifyDataSetChanged();
-                })
-                .addOnFailureListener(e -> {
-                    Log.e("Firestore", "Lỗi khi lấy dữ liệu từ Firestore", e);
-                });
+                }
+                adapter.notifyDataSetChanged();
+            })
+            .addOnFailureListener(e -> {
+                Log.e("Firestore", "Lỗi khi lấy dữ liệu từ Firestore", e);
+            });
     }
 
     private void deleteActor(String id) {

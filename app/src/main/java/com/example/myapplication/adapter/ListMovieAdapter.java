@@ -2,6 +2,9 @@ package com.example.myapplication.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +14,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.myapplication.R;
+import com.example.myapplication.activity.List_movie;
+import com.example.myapplication.activity.MovieDetails;
+
+import com.example.myapplication.activity.UserMovieDetails;
 import com.example.myapplication.model.Movie;
 import com.squareup.picasso.Picasso;
 
@@ -21,6 +27,7 @@ import java.util.List;
 public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.ViewHolder>{
     List<Movie> movieList;
     Context context;
+
 
     public ListMovieAdapter(List<Movie> movieList, Context context) {
         this.movieList = movieList;
@@ -49,12 +56,14 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.View
         holder.name.setText(movieList.get(position).getTitle());
         holder.price.setText(String.valueOf(movieList.get(position).getPrice()));
         holder.genre.setText(movieList.get(position).getGenre());
+//        Log.e("TAG", "onBindViewHolder: "+ movieList.get(position).getTitle());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String id = movieList.get(position).getId();
                 if(!id.equals("")){
-
+                    List_movie.clickMoviePosition = id;
+                    goToDetail(movieList.get(position));
                 }
             }
         });
@@ -66,7 +75,14 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.View
             }
         });
     }
-
+    private void goToDetail(Movie movie) {
+        Intent intent = new Intent(context, UserMovieDetails.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Movie1", movie);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
     @Override
     public int getItemCount() {
         if(movieList!=null){
