@@ -7,9 +7,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.adapter.TheaterAdapter;
+import com.example.myapplication.adapter.ListTheaterAdapter;
+import com.example.myapplication.model.Movie;
 import com.example.myapplication.model.Theater;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -20,24 +24,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListTheater extends AppCompatActivity {
+    ImageView imgBack;
     List<Theater> theaterList;
     FirebaseFirestore db;
-    TheaterAdapter adapter;
+    ListTheaterAdapter adapter;
     RecyclerView recyclerView;
+    Movie movie;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_theater);
+        imgBack = findViewById(R.id.imgBack);
         db = FirebaseFirestore.getInstance();
         theaterList = new ArrayList<>();
         loadDataFromFirestore();
-        adapter = new TheaterAdapter(theaterList, getBaseContext());
+        
+        movie = (Movie) getIntent().getExtras().get("Movie1");
+
+        adapter = new ListTheaterAdapter(theaterList, getBaseContext());
         recyclerView = findViewById(R.id.recyclerViewListTheater);
         recyclerView.setAdapter(adapter);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getBaseContext(), DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
         recyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, false));
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
 
     public void loadDataFromFirestore() {
@@ -54,7 +71,7 @@ public class ListTheater extends AppCompatActivity {
                     }
                 }
             } else {
-
+                Log.e("Choose theater", "Lỗi khi lấy danh sách rạp trên Firestore");
             }
         });
     }

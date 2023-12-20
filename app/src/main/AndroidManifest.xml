@@ -19,7 +19,7 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".activity.ChooseShowtime"
+            android:name=".activity.ListShowtime"
             android:exported="false" />
         <activity
             android:name=".activity.ListTheater"
@@ -85,9 +85,6 @@
         <activity
             android:name=".activity.List_movie"
             android:configChanges="locale"
-            android:exported="false" />
-        <activity
-            android:name=".activity.User_List_movie"
             android:exported="false" />
         <activity
             android:name=".admin.Admin_home"
