@@ -8,13 +8,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="8dp">
 
         <ImageView
+            android:layout_marginStart="4dp"
+            android:scaleType="centerCrop"
             android:id="@+id/movieImage"
-            android:layout_width="153dp"
-            android:layout_height="190dp"
-            android:layout_marginTop="4dp"
+            android:layout_width="140dp"
+            android:layout_height="180dp"
             android:src="@drawable/test2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -26,7 +28,6 @@
             android:layout_width="182dp"
             android:layout_height="30dp"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
             android:gravity="center|left"
             android:text="Tên Phim"
             android:textColor="@color/red"
@@ -156,10 +157,10 @@
         <Button
             android:id="@+id/btnTicket"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="44dp"
-            android:background="@drawable/rounded_background"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="48dp"
+            android:backgroundTint="@color/red"
             android:text="Mua Vé"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -176,7 +177,7 @@
             android:text="Thoát"
             android:textColor="@color/red"
             app:layout_constraintEnd_toStartOf="@+id/btnTicket"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.511"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
     </androidx.constraintlayout.widget.ConstraintLayout>

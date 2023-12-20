@@ -97,8 +97,8 @@
                     android:paddingEnd="16dp"
                     android:paddingTop="12dp"
                     android:paddingBottom="12dp"
-                    android:textColor="@color/white"
-                    android:background="@drawable/rounded_background" />
+                    android:textColor="@color/red"
+                     />
 
                 <View
                     android:layout_width="match_parent"
@@ -117,8 +117,8 @@
                     android:paddingEnd="16dp"
                     android:paddingTop="12dp"
                     android:paddingBottom="12dp"
-                    android:textColor="@color/white"
-                    android:background="@drawable/rounded_background" />
+                    android:textColor="@color/red"
+                     />
 
                 <View
                     android:layout_width="match_parent"
@@ -142,7 +142,7 @@
                         android:paddingBottom="12dp"
                         android:textColor="@color/red"
                         android:layout_weight="1"
-                        android:background="@drawable/rounded_background" />
+                        />
                     <Switch
                         android:id="@+id/switch_language"
                         android:layout_width="48dp"
@@ -164,8 +164,7 @@
                     android:paddingEnd="16dp"
                     android:paddingTop="12dp"
                     android:paddingBottom="12dp"
-                    android:textColor="@color/white"
-                    android:background="@drawable/rounded_background"
+                    android:textColor="@color/red"
                     tools:ignore="InvalidId" />
 
             </LinearLayout>

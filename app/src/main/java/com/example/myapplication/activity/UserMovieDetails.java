@@ -94,9 +94,9 @@ public class UserMovieDetails extends AppCompatActivity {
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), Buy_ticket.class);
+                Intent intent = new Intent(getBaseContext(), ListTheater.class);
                 intent.putExtra("ID", movie.getId());
-                startActivityForResult(intent, 101);
+                startActivity(intent);
             }
         });
     }
