@@ -27,7 +27,7 @@
             android:id="@+id/movieName"
             android:layout_width="182dp"
             android:layout_height="30dp"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="8dp"
             android:gravity="center|left"
             android:text="Tên Phim"
             android:textColor="@color/red"
@@ -43,7 +43,7 @@
             android:layout_height="30dp"
             android:drawableStart="@drawable/clock"
             android:drawablePadding="6dp"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="44dp"
             android:gravity="center|left"
             android:text="Thời lượng"
@@ -60,7 +60,7 @@
             android:drawableStart="@drawable/user"
             android:drawablePadding="6dp"
             android:layout_marginTop="84dp"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="8dp"
             android:gravity="center|left"
             android:text="Đạo diễn"
             android:textSize="16dp"
@@ -76,7 +76,7 @@
             android:drawableStart="@drawable/types"
             android:drawablePadding="6dp"
             android:layout_marginTop="124dp"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="8dp"
             android:gravity="center|left"
             android:text="Thể loại"
             android:textSize="16dp"
@@ -92,7 +92,7 @@
             android:drawableStart="@drawable/money"
             android:drawablePadding="6dp"
             android:layout_marginTop="164dp"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="8dp"
             android:gravity="center|left"
             android:text="Giá vé"
             android:textSize="16dp"
@@ -101,7 +101,7 @@
             app:layout_constraintStart_toEndOf="@+id/movieImage"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <VideoView
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
             android:id="@+id/movieTrailer"
             android:layout_width="363dp"
             android:layout_height="180dp"
@@ -110,7 +110,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/moviePrice">
 
-        </VideoView>
+        </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
 
 
         <TextView

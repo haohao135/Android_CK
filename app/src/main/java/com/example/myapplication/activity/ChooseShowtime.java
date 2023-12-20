@@ -14,5 +14,4 @@ public class ChooseShowtime extends AppCompatActivity {
         setContentView(R.layout.activity_choose_showtime);
         String a = getIntent().getStringExtra("key1");
     }
-
 }

@@ -2,20 +2,28 @@ package com.example.myapplication.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LifecycleObserver;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 import com.squareup.picasso.Picasso;
 
 import com.example.myapplication.R;
@@ -35,7 +43,7 @@ import java.util.UUID;
 public class UserMovieDetails extends AppCompatActivity {
     TextView movieName, movieDuration, movieDirector, movieGenre, moviePrice, movieDescription, movieActor;
     ImageView movieImage;
-    VideoView movieTrailer;
+    YouTubePlayerView movieTrailer;
     Button back, buy;
     Movie movie;
     FirebaseFirestore db;
@@ -61,18 +69,72 @@ public class UserMovieDetails extends AppCompatActivity {
         buy= findViewById(R.id.btnTicket);
 
         movie = (Movie) getIntent().getExtras().get("Movie1");
+        Picasso.with(getBaseContext())
+                .load(movie.getImage())
+                .placeholder(R.mipmap.ic_launcher)
+                .into(movieImage);
+
         movieName.setText(movie.getTitle());
-//        movieImage.setText(movie.getImage());
         moviePrice.setText(String.valueOf(movie.getPrice()));
         movieDuration.setText(movie.getDuration());
         movieDirector.setText(movie.getDirector());
         movieGenre.setText(movie.getGenre());
-//        movieTrailer.setText(movie.getTrailer());
         movieDescription.setText(movie.getDescription());
+        getLifecycle().addObserver(movieTrailer);
+        movieTrailer.addYouTubePlayerListener(new YouTubePlayerListener() {
+            @Override
+            public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+                String videoId = movie.getTrailer();
+                youTubePlayer.loadVideo(videoId, 0);
+            }
 
-//        movie = (Movie) getIntent().getExtras().get("Movie1");
+            @Override
+            public void onStateChange(@NonNull YouTubePlayer youTubePlayer, @NonNull PlayerConstants.PlayerState playerState) {
+
+            }
+
+            @Override
+            public void onPlaybackQualityChange(@NonNull YouTubePlayer youTubePlayer, @NonNull PlayerConstants.PlaybackQuality playbackQuality) {
+
+            }
+
+            @Override
+            public void onPlaybackRateChange(@NonNull YouTubePlayer youTubePlayer, @NonNull PlayerConstants.PlaybackRate playbackRate) {
+
+            }
+
+            @Override
+            public void onError(@NonNull YouTubePlayer youTubePlayer, @NonNull PlayerConstants.PlayerError playerError) {
+
+            }
+
+            @Override
+            public void onCurrentSecond(@NonNull YouTubePlayer youTubePlayer, float v) {
+
+            }
+
+            @Override
+            public void onVideoDuration(@NonNull YouTubePlayer youTubePlayer, float v) {
+
+            }
+
+            @Override
+            public void onVideoLoadedFraction(@NonNull YouTubePlayer youTubePlayer, float v) {
+
+            }
+
+            @Override
+            public void onVideoId(@NonNull YouTubePlayer youTubePlayer, @NonNull String s) {
+
+            }
+
+            @Override
+            public void onApiChange(@NonNull YouTubePlayer youTubePlayer) {
+
+            }
+        });
+
         actorList = movie.getActorList();
-        // Iterate over the actor list and build the actor names string
         StringBuilder actorNamesBuilder = new StringBuilder();
         for (int i = 0; i < actorList.size(); i++) {
             Actor actor = actorList.get(i);
