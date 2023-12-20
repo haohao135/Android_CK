@@ -39,7 +39,7 @@ public class ListTheater extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         theaterList = new ArrayList<>();
         loadDataFromFirestore();
-        
+
         movie = (Movie) getIntent().getExtras().get("Movie1");
 
         adapter = new ListTheaterAdapter(theaterList, getBaseContext());
