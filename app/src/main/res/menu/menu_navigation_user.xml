@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="Mua vé" android:id="@+id/buy_ticket" android:icon="@drawable/ticket"/>
-    <item android:title="Phim" android:id="@+id/movie" android:icon="@drawable/film"/>
-    <item android:title="Lịch chiếu" android:id="@+id/showtime" android:icon="@drawable/calendar"/>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/buy_ticket"
+        android:icon="@drawable/ticket"
+        android:title="@string/mua_ve" />
+    <item
+        android:id="@+id/movie"
+        android:icon="@drawable/film"
+        android:title="@string/phim" />
+    <item
+        android:id="@+id/showtime"
+        android:icon="@drawable/calendar"
+        android:title="@string/lich_chieu" />
 </menu>

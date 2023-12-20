@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">My Application</string>
+
+    <string name="open_drawer" translatable="false">Mở</string>
+    <string name="close_drawer" translatable="false">Đóng</string>
+    <string name="thoat">Thoát</string>
+    <string name="them">Thêm</string>
+    <string name="nhap_ten_dien_vien">Nhập tên diễn viên</string>
+    <string name="language">Tiêng Việt</string>
+    <string name="them_dien_vien">Thêm diễn viên</string>
+    <string name="them_lich_chieu">Thêm lịch chiếu</string>
+    <string name="ngay_chieu">Ngày chiếu</string>
+    <string name="gio_bat_dau">Giờ bắt đầu</string>
+    <string name="gio_ket_thuc">Giờ kết thúc</string>
+    <string name="ten_phim">Tên phim</string>
+    <string name="ten_rap">Tên rạp</string>
+    <string name="tim_kiem_phim">Tìm kiếm phim</string>
+    <string name="the_loai">Thể loại</string>
+    <string name="tai_khoan_email">Tài khoản email</string>
+    <string name="mat_khau">Mật khẩu</string>
+    <string name="dang_nhap">Đăng nhập</string>
+    <string name="hoac">hoặc</string>
+    <string name="dang_ky">Đăng ký</string>
+    <string name="quen_mat_khau">Quên mật khẩu?</string>
+    <string name="danh_sach_dien_vien">Danh sách diễn viên</string>
+    <string name="ban_da_co_tai_khoan">Bạn đã có tài khoản?</string>
+    <string name="tro_lai">Trở lại</string>
+    <string name="nhap_email">Nhập email</string>
+    <string name="ten_nguoi_dung">Tên người dùng</string>
+    <string name="nhap_lai_mat_khau">Nhập lại mật khẩu</string>
+    <string name="sua_ten_dien_vien">Sửa tên diễn viên</string>
+    <string name="sua_thong_tin_phim">Sửa thông tin phim</string>
+    <string name="sua_lich_chieu">Sửa lịch chiếu</string>
+    <string name="sua_rap_phim">Sửa rạp phim</string>
+    <string name="lich_chieu">Lịch chiếu</string>
+    <string name="phim_hot_hom_nay">Phim Hot Hôm Nay</string>
+    <string name="them_phim">Thêm phim</string>
+    <string name="them_rap">Thêm rạp</string>
+    <string name="ho_so_ca_nhan">Hồ sơ cá nhân</string>
+    <string name="ve_da_mua">Vé đã mua</string>
+    <string name="dang_xuat">Đăng xuất</string>
+    <string name="xin_chao">Xin chào</string>
+    <string name="dat_ve">Đặt vé</string>
+    <string name="phim">Phim</string>
+    <string name="rap">Rạp</string>
+    <string name="tai_khoan">Tài khoản</string>
+    <string name="sua">Sửa</string>
+    <string name="xoa">Xóa</string>
+    <string name="quan_li_phim">Quản lí phim</string>
+    <string name="quan_li_rap">Quản lí rạp</string>
+    <string name="quan_li_ve">Quản lí vé</string>
+    <string name="quan_li_lich_chieu">Quản lí lịch chiếu</string>
+    <string name="quan_li_tai_khoan">Quản lí tài khoản</string>
+    <string name="mua_ve">Mua vé</string>
+    <string name="tieng_viet">Tiếng Anh</string>
+</resources>

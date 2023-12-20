@@ -14,7 +14,7 @@
         android:layout_marginTop="44dp"
         android:text="Thêm phim mới"
         android:textColor="@color/red"
-        android:textSize="30dp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:text="Tên phim"
             android:textColor="@color/red"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -44,7 +44,7 @@
                 android:background="@drawable/edittext_border"
                 android:layout_width="230dp"
                 android:layout_height="30dp"
-                android:layout_alignParentRight="true" />
+                android:layout_alignParentEnd="true" />
         </RelativeLayout>
     </LinearLayout>
 
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:text="Hình ảnh"
             android:textColor="@color/red"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -89,17 +89,18 @@
             android:layout_height="wrap_content"
             android:text="Giá tiền"
             android:textColor="@color/red"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/moviePrice"
-                android:background="@drawable/edittext_border"
                 android:layout_width="230dp"
                 android:layout_height="30dp"
-                android:layout_alignParentRight="true" />
+                android:layout_alignParentRight="true"
+                android:background="@drawable/edittext_border"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
         </RelativeLayout>
     </LinearLayout>
 
@@ -118,7 +119,7 @@
             android:layout_height="wrap_content"
             android:text="Thời lượng"
             android:textColor="@color/red"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -147,7 +148,7 @@
             android:layout_height="wrap_content"
             android:text="Tác giả"
             android:textColor="@color/red"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -175,17 +176,18 @@
             android:layout_height="wrap_content"
             android:text="Thể loại"
             android:textColor="@color/red"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/movieGenre"
-                android:background="@drawable/edittext_border"
                 android:layout_width="230dp"
                 android:layout_height="30dp"
-                android:layout_alignParentRight="true" />
+                android:layout_alignParentRight="true"
+                android:background="@drawable/edittext_border"
+                tools:ignore="SpeakableTextPresentCheck" />
         </RelativeLayout>
     </LinearLayout>
 
@@ -204,7 +206,7 @@
             android:layout_height="wrap_content"
             android:text="Giới thiệu"
             android:textColor="@color/red"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -232,7 +234,7 @@
             android:layout_height="wrap_content"
             android:text="Mô tả"
             android:textColor="@color/red"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
         <RelativeLayout
             android:layout_width="match_parent"

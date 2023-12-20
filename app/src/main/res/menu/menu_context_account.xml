@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="Sửa" android:id="@+id/editAccount"/>
-    <item android:title="Xóa" android:id="@+id/deleteAccount"/>
+    <item android:title="@string/sua" android:id="@+id/editAccount"/>
+    <item android:title="@string/xoa" android:id="@+id/deleteAccount"/>
 </menu>

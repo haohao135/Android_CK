@@ -1,21 +1,27 @@
 package com.example.myapplication.fragment;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
-import android.text.method.ArrowKeyMovementMethod;
 import android.text.method.LinkMovementMethod;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.myapplication.MainActivity;
@@ -31,10 +37,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
+import java.util.Locale;
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link UserFragment#newInstance} factory method to
  * create an instance of this fragment.
+ * @noinspection ALL, deprecation
  */
 public class UserFragment extends Fragment {
 
@@ -77,12 +87,15 @@ public class UserFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+
     TextView helloName;
     ImageView imageView;
     DrawerLayout drawerLayout;
+    Switch switchLanguage;
     NavigationView navigationView;
     TextView logout;
     FirebaseFirestore db;
+
     @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -94,8 +107,41 @@ public class UserFragment extends Fragment {
         imageView = view.findViewById(R.id.iconImageViewMenu2);
         logout = view.findViewById(R.id.logout);
         helloName = view.findViewById(R.id.HelloName);
+        switchLanguage = view.findViewById(R.id.switch_language);
+        if (Locale.getDefault().getLanguage().equals("vi")) {
+            switchLanguage.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                if (isChecked) {
+                    builder.setMessage("Bạn có chắc muốn chuyển ngôn ngữ không?")
+                            .setPositiveButton("OK", (dialog, which) -> {
+                                setLanguage("en");
+                                switchLanguage.setChecked(false);
+                            })
+                            .setNegativeButton("Cancel", (dialog, which) -> {
+                                dialog.dismiss();
+                            });
+                    builder.create().show();
+                }
+            }); //
+        } else {
+            switchLanguage.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                if (isChecked) {
+                    builder.setMessage("Are you sure to change language?")
+                            .setPositiveButton("OK", (dialog, which) -> {
+                                setLanguage("vi");
+                                switchLanguage.setChecked(false);
+                            })
+                            .setNegativeButton("Cancel", (dialog, which) -> {
+                                dialog.dismiss();
+                            });
+                    builder.create().show();
+                }
+            });
 
-        if(MovieFragment.login_status==true){
+        }
+
+        if (MovieFragment.login_status == true) {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             getUserNameById(user.getUid());
         }
@@ -115,7 +161,7 @@ public class UserFragment extends Fragment {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
-                if(itemId == R.id.movie){
+                if (itemId == R.id.movie) {
                     startActivity(new Intent(getContext(), List_movie.class));
                 } else if (itemId == R.id.buy_ticket) {
                     startActivity(new Intent(getContext(), Buy_ticket.class));
@@ -136,7 +182,18 @@ public class UserFragment extends Fragment {
         return view;
     }
 
-    public void logout(){
+    public void setLanguage(String language) {
+        Resources resources = getResources();
+        Configuration configuration = resources.getConfiguration();
+        DisplayMetrics displayMetrics = resources.getDisplayMetrics();
+        Locale locale = new Locale(language);
+        Locale.setDefault(locale);
+        configuration.setLocale(locale);
+        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
+        ((Activity) getContext()).recreate();
+    }
+
+    public void logout() {
         MovieFragment.login_status = false;
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(getActivity().getApplicationContext(), MainActivity.class));

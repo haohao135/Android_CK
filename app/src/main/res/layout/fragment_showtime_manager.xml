@@ -22,7 +22,7 @@
         android:layout_marginTop="612dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/red"
-        android:text="Thêm lịch chiếu"
+        android:text="@string/them_lich_chieu"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

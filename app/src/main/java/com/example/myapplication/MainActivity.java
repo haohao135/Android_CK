@@ -6,6 +6,8 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -15,6 +17,8 @@ import com.example.myapplication.fragment.MovieFragment;
 import com.example.myapplication.fragment.ViewPagerAdapter;
 import com.example.myapplication.model.Movie;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     ViewPager viewPager;

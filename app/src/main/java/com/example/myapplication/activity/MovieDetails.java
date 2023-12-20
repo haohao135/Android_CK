@@ -32,6 +32,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+/** @noinspection deprecation*/
 public class MovieDetails extends AppCompatActivity {
     TextView name;
     public static String pos;
