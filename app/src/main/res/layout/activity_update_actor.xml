@@ -10,9 +10,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="88dp"
-        android:text="Sửa tên diễn viên"
+        android:text="@string/sua_ten_dien_vien"
         android:textColor="@color/red"
-        android:textSize="30dp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:drawablePadding="8dp"
-            android:hint="Nhập tên diễn viên"
+            android:hint="@string/nhap_ten_dien_vien"
             android:padding="8dp" />
     </FrameLayout>
 
@@ -46,7 +46,7 @@
         android:layout_height="55dp"
         android:layout_marginTop="100dp"
         android:backgroundTint="@color/red"
-        android:text="Thêm"
+        android:text="@string/them"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -60,7 +60,7 @@
         android:layout_marginTop="24dp"
         android:background="@drawable/rounded_backgroud1"
         android:backgroundTint="@color/white"
-        android:text="Thoát"
+        android:text="@string/thoat"
         android:textColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"

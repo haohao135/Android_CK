@@ -20,61 +20,77 @@
         tools:targetApi="31">
         <activity
             android:name=".activity.ViewShowtime"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="locale"/>
         <activity
             android:name=".activity.UpdateShowtime"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="locale"/>
         <activity
             android:name=".activity.AddShowtime"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="locale"/>
         <activity
             android:name=".activity.UpdateActor"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="locale"/>
         <activity
             android:name=".activity.AddActor"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="locale"/>
         <activity
             android:name=".activity.MovieDetails"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="locale"/>
         <activity
             android:name=".activity.UserMovieDetails"
             android:exported="false" />
         <activity
             android:name=".activity.UpdateTheater"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="locale"/>
         <activity
             android:name=".activity.AddTheater"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="locale"/>
         <activity
             android:name=".activity.UpdateMovie"
             android:exported="false" />
         <activity
             android:name=".activity.AddMovie"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="locale"/>
         <activity
             android:name=".activity.SignUp"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="locale"/>
         <activity
             android:name=".activity.Login"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="locale"/>
         <activity
             android:name=".activity.RequestLogin"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="locale"/>
         <activity
             android:name=".activity.Buy_ticket"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="locale"/>
         <activity
             android:name=".activity.List_movie"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="locale"/>
         <activity
             android:name=".activity.User_List_movie"
             android:exported="false" />
         <activity
             android:name=".admin.Admin_home"
-            android:exported="true" />
+            android:exported="true"
+            android:configChanges="locale"/>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:configChanges="locale">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

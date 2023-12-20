@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
         android:backgroundTint="@color/red"
-        android:text="Thêm phim"
+        android:text="@string/them_phim"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

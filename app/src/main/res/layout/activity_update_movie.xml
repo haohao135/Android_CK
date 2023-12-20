@@ -11,9 +11,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
-        android:text="Sửa thông tin phim"
+        android:text="@string/sua_thong_tin_phim"
         android:textColor="@color/red"
-        android:textSize="30dp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -262,11 +262,10 @@
         android:id="@+id/save"
         android:layout_width="150dp"
         android:layout_height="55dp"
-
         android:layout_marginTop="92dp"
         android:layout_marginEnd="4dp"
         android:backgroundTint="@color/red"
-        android:text="Lưu"
+        android:text="@string/them"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout13" />
 
@@ -277,7 +276,7 @@
         android:layout_marginTop="96dp"
         android:background="@drawable/rounded_backgroud1"
         android:backgroundTint="@color/white"
-        android:text="Thoát"
+        android:text="@string/thoat"
         android:textColor="@color/red"
         app:layout_constraintEnd_toStartOf="@+id/save"
         app:layout_constraintHorizontal_bias="0.0"

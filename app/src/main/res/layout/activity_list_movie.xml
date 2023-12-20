@@ -24,7 +24,7 @@
         android:layout_marginTop="68dp"
         android:drawableLeft="@drawable/search"
         android:drawablePadding="8dp"
-        android:hint="Tìm kiếm phim"
+        android:hint="@string/tim_kiem_phim"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.585"
@@ -37,9 +37,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="144dp"
         android:layout_marginTop="8dp"
-        android:text="Thể loại"
+        android:text="@string/the_loai"
         android:textColor="@color/red"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 

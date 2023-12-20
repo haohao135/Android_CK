@@ -39,7 +39,7 @@
             android:background="@android:color/transparent"
             android:drawableStart="@drawable/mail"
             android:drawablePadding="8dp"
-            android:hint="Nhập email"
+            android:hint="@string/nhap_email"
             android:padding="8dp"
             tools:layout_editor_absoluteX="72dp"
             tools:layout_editor_absoluteY="250dp" />
@@ -63,7 +63,7 @@
             android:background="@android:color/transparent"
             android:drawableStart="@drawable/user"
             android:drawablePadding="8dp"
-            android:hint="Tên người dùng"
+            android:hint="@string/ten_nguoi_dung"
             android:padding="8dp" />
     </FrameLayout>
 
@@ -85,7 +85,7 @@
             android:background="@android:color/transparent"
             android:drawableStart="@drawable/padlock"
             android:drawablePadding="8dp"
-            android:hint="Mật khẩu"
+            android:hint="@string/mat_khau"
             android:padding="8dp" />
     </FrameLayout>
 
@@ -107,7 +107,7 @@
             android:background="@android:color/transparent"
             android:drawableStart="@drawable/padlock"
             android:drawablePadding="8dp"
-            android:hint="Nhập lại mật khẩu"
+            android:hint="@string/nhap_lai_mat_khau"
             android:padding="8dp" />
     </FrameLayout>
 
@@ -117,7 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:backgroundTint="@color/red"
-        android:text="Đăng ký"
+        android:text="@string/dang_ky"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -131,7 +131,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/rounded_backgroud1"
         android:backgroundTint="@color/white"
-        android:text="Đăng nhập"
+        android:text="@string/dang_nhap"
         android:textColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
