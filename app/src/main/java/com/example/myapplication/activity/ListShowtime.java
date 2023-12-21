@@ -61,14 +61,13 @@ public class ListShowtime extends AppCompatActivity {
     public void loadCorrectDataFromFirestore(String movieID, String theaterID) {
         showtimeList.clear();
         CollectionReference moviesRef = db.collection("showtimes");
-
         moviesRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 QuerySnapshot querySnapshot = task.getResult();
                 if (querySnapshot != null) {
                     for (QueryDocumentSnapshot document : querySnapshot) {
                         Showtime showtime = document.toObject(Showtime.class);
-                        if(showtime.getMovie_id()==movieID && showtime.getTheater_id()==theaterID){
+                        if(showtime.getMovie_id().equals(movieID) && showtime.getTheater_id().equals(theaterID)){
                             showtimeList.add(showtime);
                             adapter.notifyDataSetChanged();
                         }
