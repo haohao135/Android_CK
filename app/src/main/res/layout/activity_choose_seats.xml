@@ -42,25 +42,25 @@
         android:layout_marginTop="72dp"
         android:background="@color/material_dynamic_neutral40"
         android:backgroundTint="@color/material_dynamic_neutral_variant50"
-        android:text="SCREEN"
+        android:text="@string/man_hinh"
         android:textAlignment="center"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
+        app:layout_constraintTop_toTopOf="parent"/>
 
-    <GridView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/gridSeats"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="500dp"
         android:layout_marginTop="24dp"
         android:numColumns="5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView22">
-    </GridView>
+    </androidx.recyclerview.widget.RecyclerView>
 
     <LinearLayout
         android:layout_width="match_parent"

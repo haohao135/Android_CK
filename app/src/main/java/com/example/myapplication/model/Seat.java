@@ -34,10 +34,6 @@ public class Seat implements Serializable {
         this.seat_number = seat_number;
     }
 
-    public int isStatus() {
-        return status;
-    }
-
     public void setStatus(int status) {
         this.status = status;
     }
@@ -48,5 +44,19 @@ public class Seat implements Serializable {
 
     public void setTheater_id(String theater_id) {
         this.theater_id = theater_id;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    @Override
+    public String toString() {
+        return "Seat{" +
+                "id='" + id + '\'' +
+                ", seat_number=" + seat_number +
+                ", status=" + status +
+                ", theater_id='" + theater_id + '\'' +
+                '}';
     }
 }

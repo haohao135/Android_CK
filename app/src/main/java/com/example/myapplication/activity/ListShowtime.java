@@ -1,7 +1,9 @@
 package com.example.myapplication.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -49,6 +51,11 @@ public class ListShowtime extends AppCompatActivity {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getBaseContext(), DividerItemDecoration.VERTICAL);
         recyclerViewListShowtime.addItemDecoration(dividerItemDecoration);
         recyclerViewListShowtime.setLayoutManager(new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, false));
+
+        SharedPreferences sharedPref = getBaseContext().getSharedPreferences("MyTheaterID", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("theaterID", theaterID);
+        editor.apply();
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
