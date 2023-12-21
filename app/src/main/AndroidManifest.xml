@@ -25,7 +25,7 @@
             android:name=".activity.ForgotPassword"
             android:exported="false" />
         <activity
-            android:name=".activity.ChooseShowtime"
+            android:name=".activity.ListShowtime"
             android:exported="false" />
         <activity
             android:name=".activity.ListTheater"

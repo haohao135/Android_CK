@@ -27,14 +27,14 @@ public class UpdateMovie extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_movie);
 
-        movieName = findViewById(R.id.updateMovieName);
-        movieImage = findViewById(R.id.updateMovieImage);
-        moviePrice = findViewById(R.id.updateMoviePrice);
-        movieDuration = findViewById(R.id.updateMovieDuration);
-        movieDirector = findViewById(R.id.updateMovieDirector);
-        movieGenre = findViewById(R.id.updateMovieGenre);
-        movieTrailer = findViewById(R.id.updateMovieTrailer);
-        movieDescription = findViewById(R.id.updateMovieDescription);
+        movieName = findViewById(R.id.movieName);
+        movieImage = findViewById(R.id.movieImage);
+        moviePrice = findViewById(R.id.moviePrice);
+        movieDuration = findViewById(R.id.movieDuration);
+        movieDirector = findViewById(R.id.movieDirector);
+        movieGenre = findViewById(R.id.movieGenre);
+        movieTrailer = findViewById(R.id.movieTrailer);
+        movieDescription = findViewById(R.id.movieDescription);
         back = findViewById(R.id.back);
         save = findViewById(R.id.save);
 
