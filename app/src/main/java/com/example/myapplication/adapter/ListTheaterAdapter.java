@@ -3,7 +3,9 @@ package com.example.myapplication.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +26,7 @@ import java.util.List;
 public class ListTheaterAdapter extends RecyclerView.Adapter<ListTheaterAdapter.ViewHolder>{
     List<Theater> theaterList;
     Context context;
+    SharedPreferences sharedPreferences;
 
     public ListTheaterAdapter(List<Theater> theaterList, Context context) {
         this.theaterList = theaterList;
@@ -52,17 +55,21 @@ public class ListTheaterAdapter extends RecyclerView.Adapter<ListTheaterAdapter.
                 String id = theaterList.get(position).getId();
                 if(!id.equals("")){
                     Movie_Manager_Fragment.clickMoviePosition = id;
-                    goToDetail(theaterList.get(position));
+
+                    SharedPreferences sharedPref = context.getSharedPreferences("MyLove", Context.MODE_PRIVATE);
+                    String movieID = sharedPref.getString("movieID", "1");
+                    goToDetail(theaterList.get(position).getId(),movieID);
                 }
             }
         });
     }
 
-    private void goToDetail(Theater theater) {
+    private void goToDetail(String theaterID, String movieID) {
+
         Intent intent = new Intent(context, ListShowtime.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra("theater_id", theater.getId());
-//        intent.putExtra("movie_id", theater.getId());
+        intent.putExtra("theaterID", theaterID);
+        intent.putExtra("movieID", movieID);
 
         context.startActivity(intent);
     }

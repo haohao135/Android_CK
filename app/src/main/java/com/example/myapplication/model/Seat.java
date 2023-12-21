@@ -5,13 +5,13 @@ import java.io.Serializable;
 public class Seat implements Serializable {
     private String id;
     private int seat_number;
-    private boolean status;
+    private int status;
     private String theater_id;
 
     public Seat() {
     }
 
-    public Seat(String id, int seat_number, boolean status, String theater_id) {
+    public Seat(String id, int seat_number, int status, String theater_id) {
         this.id = id;
         this.seat_number = seat_number;
         this.status = status;
@@ -34,11 +34,11 @@ public class Seat implements Serializable {
         this.seat_number = seat_number;
     }
 
-    public boolean isStatus() {
+    public int isStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

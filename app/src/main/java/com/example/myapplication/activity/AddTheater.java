@@ -51,7 +51,7 @@ public class AddTheater extends AppCompatActivity {
                 List<Seat> seatList = new ArrayList<>();
                 for (int i = 1; i <= 40; i++){
                     String id = String.valueOf(UUID.randomUUID());
-                    Seat seat = new Seat(id, i, false, tid);
+                    Seat seat = new Seat(id, i, 1, tid);
                     seatList.add(seat);
                 }
                 Theater theater = new Theater(tid, ename, eaddress, seatList);

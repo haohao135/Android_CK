@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -40,7 +42,12 @@ public class ListTheater extends AppCompatActivity {
         theaterList = new ArrayList<>();
         loadDataFromFirestore();
 
-        movie = (Movie) getIntent().getExtras().get("Movie1");
+        String movieID= getIntent().getStringExtra("ID");
+        SharedPreferences sharedPref = getBaseContext().getSharedPreferences("MyLove", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("movieID", movieID );
+        editor.apply();
+
 
         adapter = new ListTheaterAdapter(theaterList, getBaseContext());
         recyclerView = findViewById(R.id.recyclerViewListTheater);
