@@ -54,4 +54,5 @@
     <string name="mua_ve">Buy ticket</string>
     <string name="tieng_viet">Vietnamese</string>
     <string name="gui_xac_nhan_den_email">Gửi xác nhận đến email</string>
+    <string name="man_hinh">Màn hình</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.example.myapplication.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.activity.ChooseSeats;
+import com.example.myapplication.activity.UserMovieDetails;
 import com.example.myapplication.model.Showtime;
 import com.example.myapplication.model.Theater;
 import com.google.firebase.firestore.CollectionReference;
@@ -51,7 +54,9 @@ public class ShowtimeAdapter extends RecyclerView.Adapter<ShowtimeAdapter.ViewHo
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(context, ChooseSeats.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             }
         });
     }

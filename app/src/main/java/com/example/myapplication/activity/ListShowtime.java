@@ -1,7 +1,9 @@
 package com.example.myapplication.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -50,6 +52,11 @@ public class ListShowtime extends AppCompatActivity {
         recyclerViewListShowtime.addItemDecoration(dividerItemDecoration);
         recyclerViewListShowtime.setLayoutManager(new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, false));
 
+        SharedPreferences sharedPref = getBaseContext().getSharedPreferences("MyTheaterID", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("theaterID", theaterID);
+        editor.apply();
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +75,7 @@ public class ListShowtime extends AppCompatActivity {
                 if (querySnapshot != null) {
                     for (QueryDocumentSnapshot document : querySnapshot) {
                         Showtime showtime = document.toObject(Showtime.class);
-                        if(showtime.getMovie_id()==movieID && showtime.getTheater_id()==theaterID){
+                        if(showtime.getMovie_id().equals(movieID) && showtime.getTheater_id().equals(theaterID)){
                             showtimeList.add(showtime);
                             adapter.notifyDataSetChanged();
                         }
