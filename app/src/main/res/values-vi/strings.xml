@@ -54,4 +54,5 @@
     <string name="quan_li_tai_khoan">Quản lí tài khoản</string>
     <string name="mua_ve">Mua vé</string>
     <string name="tieng_viet">Tiếng Anh</string>
+    <string name="gui_xac_nhan_den_email">Gửi xác nhận đến email</string>
 </resources>

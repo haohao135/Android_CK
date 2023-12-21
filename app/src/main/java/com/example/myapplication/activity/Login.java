@@ -55,6 +55,12 @@ public class Login extends AppCompatActivity {
         register = findViewById(R.id.btnRegister);
         auth = FirebaseAuth.getInstance();
 
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getBaseContext(), ForgotPassword.class));
+            }
+        });
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
