@@ -3,6 +3,7 @@ package com.example.myapplication.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,6 +24,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.fragment.Movie_Manager_Fragment;
 import com.example.myapplication.model.Seat;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -60,6 +62,13 @@ public class ChooseSeats extends AppCompatActivity {
 
         getSeatFromFirestoreByTheaterID(theaterID);
         imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -111,19 +120,35 @@ class SeatAdapter extends RecyclerView.Adapter<SeatAdapter.ViewHolder> {
 
     @SuppressLint("ResourceAsColor")
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.so.setText(String.valueOf(seatList.get(position).getSeat_number()));
         if (seatList.get(position).getStatus() == 1) {
-            holder.background.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.color.green));;
+            holder.background.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.color.green));
         } else if (seatList.get(position).getStatus() == 3) {
             holder.background.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.color.red));
         }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(seatList.get(position).getStatus()==1){
+                    holder.background.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.color.yellow));
+                    seatList.get(position).setStatus(2);
+                }else if(seatList.get(position).getStatus()==2){
+                    holder.background.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.color.green));
+                    seatList.get(position).setStatus(1);
+                }
+
+                String id = seatList.get(position).getId();
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return seatList.size();
     }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView so;

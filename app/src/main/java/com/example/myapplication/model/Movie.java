@@ -149,15 +149,4 @@ public class Movie implements Serializable {
                 '}';
     }
 
-    public String toStringActor() {
-        StringBuilder actorNamesBuilder = new StringBuilder();
-        for (int i = 0; i < actorList.size(); i++) {
-            Actor actor = actorList.get(i);
-            actorNamesBuilder.append(actor.getActorName());
-            if (i != actorList.size() - 1) {
-                actorNamesBuilder.append(", ");
-            }
-        }
-        return actorNamesBuilder.toString();
-    }
 }

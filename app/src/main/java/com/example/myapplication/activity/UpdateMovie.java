@@ -40,6 +40,7 @@ public class UpdateMovie extends AppCompatActivity {
 
         Intent intent = getIntent();
         Movie movie = (Movie) intent.getExtras().get("Movie");
+
         movieName.setText(movie.getTitle());
         movieImage.setText(movie.getImage());
         moviePrice.setText(String.valueOf(movie.getPrice()));

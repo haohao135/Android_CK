@@ -191,17 +191,9 @@ public class UserFragment extends Fragment {
         tvProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(getContext(), UserProfile.class);
                 startActivity(intent);
-//                // Create a new instance of the Account_Manager_Fragment
-//                Account_Manager_Fragment accountManagerFragment = new Account_Manager_Fragment();
-//
-//                // Replace the current fragment with the Account_Manager_Fragment
-//                FragmentManager fragmentManager = getParentFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.accountManagerLayout, accountManagerFragment);
-//                fragmentTransaction.addToBackStack(null);
-//                fragmentTransaction.commit();
 
             }
         });
