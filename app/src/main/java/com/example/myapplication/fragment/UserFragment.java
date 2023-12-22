@@ -11,6 +11,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.text.method.LinkMovementMethod;
 import android.util.DisplayMetrics;
@@ -28,6 +30,8 @@ import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.activity.Buy_ticket;
 import com.example.myapplication.activity.List_movie;
+import com.example.myapplication.activity.Login;
+import com.example.myapplication.activity.UserProfile;
 import com.example.myapplication.activity.ViewShowtime;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -93,7 +97,7 @@ public class UserFragment extends Fragment {
     DrawerLayout drawerLayout;
     Switch switchLanguage;
     NavigationView navigationView;
-    TextView logout;
+    TextView logout,tvProfile;
     FirebaseFirestore db;
 
     @SuppressLint("MissingInflatedId")
@@ -101,13 +105,17 @@ public class UserFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user, container, false);
+
         db = FirebaseFirestore.getInstance();
         drawerLayout = view.findViewById(R.id.drawerLayout2);
         navigationView = view.findViewById(R.id.navigationView2);
         imageView = view.findViewById(R.id.iconImageViewMenu2);
+        tvProfile= view.findViewById(R.id.tvProfile);
         logout = view.findViewById(R.id.logout);
+
         helloName = view.findViewById(R.id.HelloName);
         switchLanguage = view.findViewById(R.id.switch_language);
+
         if (Locale.getDefault().getLanguage().equals("vi")) {
             switchLanguage.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -172,11 +180,29 @@ public class UserFragment extends Fragment {
             }
         });
 
+
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 logout();
                 return;
+            }
+        });
+        tvProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), UserProfile.class);
+                startActivity(intent);
+//                // Create a new instance of the Account_Manager_Fragment
+//                Account_Manager_Fragment accountManagerFragment = new Account_Manager_Fragment();
+//
+//                // Replace the current fragment with the Account_Manager_Fragment
+//                FragmentManager fragmentManager = getParentFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.accountManagerLayout, accountManagerFragment);
+//                fragmentTransaction.addToBackStack(null);
+//                fragmentTransaction.commit();
+
             }
         });
         return view;

@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -15,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,6 +32,8 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class ChooseSeats extends AppCompatActivity {
+    Button btnBack, btnPayment;
+    ImageView imgBack;
     FirebaseFirestore db;
     ArrayList<Seat> seatList;
     RecyclerView recyclerView;
@@ -41,6 +46,9 @@ public class ChooseSeats extends AppCompatActivity {
         setContentView(R.layout.activity_choose_seats);
         db = FirebaseFirestore.getInstance();
         recyclerView = findViewById(R.id.gridSeats);
+        imgBack= findViewById(R.id.imgBack);
+        btnBack= findViewById(R.id.btnBack);
+        btnPayment= findViewById(R.id.btnPayment);
 
         seatList = new ArrayList<>();
         SharedPreferences sharedPref = getSharedPreferences("MyTheaterID", Context.MODE_PRIVATE);
@@ -51,6 +59,13 @@ public class ChooseSeats extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(getBaseContext(), 5));
 
         getSeatFromFirestoreByTheaterID(theaterID);
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
     }
 
@@ -99,9 +114,9 @@ class SeatAdapter extends RecyclerView.Adapter<SeatAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.so.setText(String.valueOf(seatList.get(position).getSeat_number()));
         if (seatList.get(position).getStatus() == 1) {
-            holder.background.setBackgroundColor(R.color.green);
+            holder.background.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.color.green));;
         } else if (seatList.get(position).getStatus() == 3) {
-            holder.background.setBackgroundColor(R.color.red);
+            holder.background.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.color.red));
         }
     }
 

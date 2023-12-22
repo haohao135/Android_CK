@@ -1,5 +1,6 @@
 package com.example.myapplication.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,8 +8,16 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.myapplication.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,11 +65,47 @@ public class Account_Manager_Fragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+    FirebaseFirestore db;
+    EditText edEmail, edUsername,edPass;
+    Button btnBack,btnSave;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_account_manager, container, false);
+        View view = inflater.inflate(R.layout.fragment_account_manager, container, false);
+
+        db = FirebaseFirestore.getInstance();
+        edEmail= view.findViewById(R.id.edEmail);
+        edUsername= view.findViewById(R.id.edUsername);
+        edPass= view.findViewById(R.id.edPass);
+        btnBack= view.findViewById(R.id.btnBack);
+        btnSave= view.findViewById(R.id.btnSave);
+
+        if (MovieFragment.login_status == true) {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            getUserNameById(user.getUid());
+        }
+
+        return view;
+    }
+
+    public void getUserNameById(String id) {
+        CollectionReference moviesCollectionRef = db.collection("Users");
+        Query query = moviesCollectionRef.whereEqualTo("id", id);
+        query.get().addOnSuccessListener(queryDocumentSnapshots -> {
+            for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                String email = documentSnapshot.getString("email");
+                String username = documentSnapshot.getString("username");
+                String password = documentSnapshot.getString("password");
+                loadUserFromFirestore(email,username,password);
+            }
+        });
+    }
+
+    private void loadUserFromFirestore(String email,String username, String password) {
+        edEmail.setText(email);
+        edUsername.setText(username);
+        edPass.setText(password);
     }
 }
