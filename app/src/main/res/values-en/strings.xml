@@ -78,4 +78,5 @@
     <string name="ghe_trong">Empty seat</string>
     <string name="ghe_dang_chon">Chair is being selected</string>
     <string name="ghe_da_ban">Chair sold</string>
+    <string name="thong_bao">Notify</string>
 </resources>

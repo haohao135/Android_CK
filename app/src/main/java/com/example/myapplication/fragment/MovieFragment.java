@@ -24,6 +24,7 @@ import android.widget.ViewFlipper;
 
 import com.example.myapplication.R;
 import com.example.myapplication.activity.Buy_ticket;
+import com.example.myapplication.activity.CommingSoon;
 import com.example.myapplication.activity.List_movie;
 import com.example.myapplication.activity.ViewShowtime;
 import com.example.myapplication.adapter.ShowtimeHomeAdapter;
@@ -123,7 +124,7 @@ public class MovieFragment extends Fragment {
         imageViewBell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(getContext(), CommingSoon.class));
             }
         });
         imageView.setOnClickListener(new View.OnClickListener() {

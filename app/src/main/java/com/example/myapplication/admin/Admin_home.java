@@ -42,6 +42,7 @@ public class Admin_home extends AppCompatActivity implements NavigationView.OnNa
         setContentView(R.layout.activity_admin_home);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Admin");
         drawerLayout = findViewById(R.id.drawerLayout);
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
                 toolbar, R.string.open_drawer, R.string.close_drawer);

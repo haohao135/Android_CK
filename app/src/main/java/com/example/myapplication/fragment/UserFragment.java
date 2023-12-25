@@ -29,6 +29,7 @@ import android.widget.TextView;
 import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.activity.Buy_ticket;
+import com.example.myapplication.activity.CommingSoon;
 import com.example.myapplication.activity.ListTicket;
 import com.example.myapplication.activity.List_movie;
 import com.example.myapplication.activity.Login;
@@ -94,7 +95,7 @@ public class UserFragment extends Fragment {
     }
 
     TextView helloName, viewTicket;
-    ImageView imageView;
+    ImageView imageView, bell;
     DrawerLayout drawerLayout;
     Switch switchLanguage;
     NavigationView navigationView;
@@ -114,6 +115,7 @@ public class UserFragment extends Fragment {
         tvProfile= view.findViewById(R.id.tvProfile);
         logout = view.findViewById(R.id.logout);
         viewTicket = view.findViewById(R.id.tvTicket);
+        bell = view.findViewById(R.id.iconImageView);
 
         helloName = view.findViewById(R.id.HelloName);
         switchLanguage = view.findViewById(R.id.switch_language);
@@ -204,6 +206,13 @@ public class UserFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(), ListTicket.class));
+            }
+        });
+
+        bell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), CommingSoon.class));
             }
         });
         return view;

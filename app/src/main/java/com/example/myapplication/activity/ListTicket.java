@@ -14,6 +14,8 @@ import com.example.myapplication.R;
 import com.example.myapplication.adapter.TicketAdapter;
 import com.example.myapplication.model.Booking;
 import com.example.myapplication.model.Theater;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -28,6 +30,8 @@ public class ListTicket extends AppCompatActivity {
     TicketAdapter adapter;
     List<Booking> bookingList;
     FirebaseFirestore db;
+    FirebaseUser user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,8 @@ public class ListTicket extends AppCompatActivity {
         back = findViewById(R.id.imgBackToProfile);
         recyclerView = findViewById(R.id.recyclerViewTicket);
         bookingList = new ArrayList<>();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        loadDataFromFirestore(user.getUid());
         adapter = new TicketAdapter(bookingList, getApplicationContext());
         recyclerView.setAdapter(adapter);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getBaseContext(), DividerItemDecoration.VERTICAL);
@@ -49,7 +55,7 @@ public class ListTicket extends AppCompatActivity {
         });
     }
 
-    public void loadDataFromFirestore() {
+    public void loadDataFromFirestore(String id) {
         bookingList.clear();
         CollectionReference moviesRef = db.collection("bookings");
         moviesRef.get().addOnCompleteListener(task -> {
@@ -58,8 +64,11 @@ public class ListTicket extends AppCompatActivity {
                 if (querySnapshot != null) {
                     for (QueryDocumentSnapshot document : querySnapshot) {
                         Booking booking = document.toObject(Booking.class);
-                        bookingList.add(booking);
-                        adapter.notifyDataSetChanged();
+                        if(booking.getUser_id().equals(id)){
+                            bookingList.add(booking);
+                            adapter.notifyDataSetChanged();
+                        }
+
                     }
                 }
             } else {

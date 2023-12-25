@@ -50,7 +50,6 @@ public class List_movie extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Log.e("TAG", "onCreate: ");
         setContentView(R.layout.activity_list_movie);
         db = FirebaseFirestore.getInstance();
         recyclerView = findViewById(R.id.recyclerViewListMovie);
@@ -68,7 +67,6 @@ public class List_movie extends AppCompatActivity {
         genre.add("Hài hước");
         genre.add("Viễn tưởng");
 
-        loadDataFromFirestore();
         adapter = new ListMovieAdapter(movieList, getBaseContext());
 
         adapterSpinner = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, genre);
@@ -147,6 +145,7 @@ public class List_movie extends AppCompatActivity {
     }
 
     public void loadDataFromFirestore() {
+        Log.e("TAG", "loadDataFromFirestore: ");
         movieList.clear();
         CollectionReference moviesRef = db.collection("movies");
         moviesRef.get().addOnCompleteListener(task -> {

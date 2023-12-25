@@ -131,7 +131,7 @@
                     android:orientation="horizontal">
                     <TextView
                         android:drawablePadding="8dp"
-                        android:drawableStart="@drawable/ticket"
+                        android:drawableStart="@drawable/language_solid"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="@string/tieng_viet"

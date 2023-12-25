@@ -30,7 +30,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/BnameUser"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:enabled="false"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -44,7 +45,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/BnameMovie"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:enabled="false"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -58,7 +60,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/BdateShowtime"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:enabled="false"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -72,7 +75,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/BtimeShowtime"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:enabled="false"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -86,7 +90,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/Bduration"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:enabled="false"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
