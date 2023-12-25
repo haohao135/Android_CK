@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.UpdateTheater">
+
     <TextView
+        android:id="@+id/textView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
@@ -17,91 +19,48 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvUpdateTheater"
-        android:layout_width="wrap_content"
+
+    <EditText
+        android:id="@+id/updateTheaterName"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="244dp"
-        android:text="Tên rạp"
-        android:textColor="@color/red"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="44dp"
+        android:hint="Tên rạp"
+        app:layout_constraintTop_toBottomOf="@+id/textView23"
+        tools:layout_editor_absoluteX="0dp" />
 
-    <FrameLayout
-        android:id="@+id/frameLayoutName"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="244dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/edittext_border"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/tvUpdateTheater"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <EditText
-            android:id="@+id/updateTheaterName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent" />
-    </FrameLayout>
-
-    <TextView
-        android:id="@+id/tvUpdateAddressTheater"
-        android:layout_width="wrap_content"
-
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="60dp"
-        android:text="Địa chỉ"
-        android:textColor="@color/red"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvUpdateTheater" />
-
-    <FrameLayout
-        android:id="@+id/frameLayouAddress"
-        android:layout_width="280dp"
+    <EditText
+        android:id="@+id/updateTheaterAddress"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:background="@drawable/edittext_border"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.586"
-        app:layout_constraintStart_toEndOf="@+id/tvUpdateAddressTheater"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayoutName">
-
-        <EditText
-            android:id="@+id/updateTheaterAddress"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/transparent" />
-    </FrameLayout>
-
-    <Button
-        android:id="@+id/buttonBack"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="120dp"
-        android:background="@drawable/rounded_backgroud1"
-        android:backgroundTint="@color/white"
-        android:text="@string/thoat"
-        android:textColor="@color/red"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayouAddress" />
+        android:hint="Địa chỉ"
+        app:layout_constraintTop_toBottomOf="@+id/updateTheaterName"
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/btnSaveUpdateTheater"
         android:layout_width="150dp"
         android:layout_height="55dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="112dp"
         android:backgroundTint="@color/red"
         android:text="@string/them"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.384"
+        app:layout_constraintHorizontal_bias="0.361"
         app:layout_constraintStart_toEndOf="@+id/buttonBack"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayouAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/updateTheaterAddress" />
+
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="116dp"
+        android:background="@drawable/rounded_backgroud1"
+        android:backgroundTint="@color/white"
+        android:text="@string/thoat"
+        android:textColor="@color/red"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/updateTheaterAddress" />
 </androidx.constraintlayout.widget.ConstraintLayout>

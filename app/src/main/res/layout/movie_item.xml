@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/test1" />
+            android:src="@drawable/avatar" />
 
         <TextView
             android:id="@+id/name_movie"
@@ -25,7 +25,7 @@
             android:layout_height="36sp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="Em Huyền"
+            android:text="Assassin R2-D2 "
             android:textColor="@color/red"
             android:textSize="15sp"
             android:textStyle="bold" />
