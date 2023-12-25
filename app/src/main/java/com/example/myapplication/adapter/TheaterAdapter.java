@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.activity.ListShowtime;
 import com.example.myapplication.activity.MovieDetails;
 import com.example.myapplication.fragment.Movie_Manager_Fragment;
 import com.example.myapplication.model.Movie;
@@ -51,17 +52,17 @@ public class TheaterAdapter extends RecyclerView.Adapter<TheaterAdapter.ViewHold
                 String id = theaterList.get(position).getId();
                 if(!id.equals("")){
                     Movie_Manager_Fragment.clickMoviePosition = id;
-                    goToDetail(theaterList.get(position));
+                    goToDetail(theaterList.get(position).getId());
                 }
             }
         });
     }
 
-    private void goToDetail(Theater theater) {
-        Intent intent = new Intent(context, MovieDetails.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("Object", theater);
-        intent.putExtras(bundle);
+    private void goToDetail(String theaterID) {
+
+        Intent intent = new Intent(context, ListShowtime.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("theaterID", theaterID);
         context.startActivity(intent);
     }
 

@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.AddTheater">
+    tools:context=".activity.AddTheater"
+    android:padding="10dp">
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:text="Thêm rạp mới"
+        android:text="@string/them_rap"
         android:textColor="@color/red"
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
-        android:hint="Tên rạp"
+        android:hint="@string/ten_rap"
         app:layout_constraintTop_toBottomOf="@+id/textView9"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -34,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:hint="Địa chỉ"
+        android:hint="@string/dia_chi"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addNameTheater" />
 
@@ -46,7 +47,7 @@
         android:layout_marginTop="88dp"
         android:background="@drawable/rounded_backgroud1"
         android:backgroundTint="@color/white"
-        android:text="Thoát"
+        android:text="@string/thoat"
         android:textColor="@color/red"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addAddressTheater" />
@@ -58,7 +59,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="84dp"
         android:backgroundTint="@color/red"
-        android:text="Thêm"
+        android:text="@string/them"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.254"
         app:layout_constraintStart_toEndOf="@+id/button4"

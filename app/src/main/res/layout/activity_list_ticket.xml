@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ListShowtime">
+    tools:context=".activity.ListTicket">
 
     <FrameLayout
-        android:id="@+id/frameLayout"
+
+        android:id="@+id/frameLayout8"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/red"
@@ -16,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imgBack"
+            android:id="@+id/imgBackToProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -28,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="@string/chon_lich_chieu"
+            android:text="@string/ve_da_mua"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="25dp">
@@ -36,14 +37,10 @@
         </TextView>
     </FrameLayout>
 
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewListShowtime"
+        android:id="@+id/recyclerViewTicket"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="680dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout8" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -56,7 +56,6 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.View
         holder.name.setText(movieList.get(position).getTitle());
         holder.price.setText(String.valueOf(movieList.get(position).getPrice()));
         holder.genre.setText(movieList.get(position).getGenre());
-//        Log.e("TAG", "onBindViewHolder: "+ movieList.get(position).getTitle());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

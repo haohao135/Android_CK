@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,11 +27,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
 import com.example.myapplication.fragment.Movie_Manager_Fragment;
 import com.example.myapplication.model.Seat;
+import com.example.myapplication.model.Showtime;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class ChooseSeats extends AppCompatActivity {
@@ -41,6 +45,7 @@ public class ChooseSeats extends AppCompatActivity {
     RecyclerView recyclerView;
 
     SeatAdapter adapter;
+    Showtime showtime;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,16 +56,21 @@ public class ChooseSeats extends AppCompatActivity {
         imgBack= findViewById(R.id.imgBack);
         btnBack= findViewById(R.id.btnBack);
         btnPayment= findViewById(R.id.btnPayment);
-
+        showtime = (Showtime) getIntent().getExtras().get("Showtime");
         seatList = new ArrayList<>();
+        String TTID = getIntent().getStringExtra("theaterID");
         SharedPreferences sharedPref = getSharedPreferences("MyTheaterID", Context.MODE_PRIVATE);
         String theaterID = sharedPref.getString("theaterID", "1");
-
+        if(TTID == null){
+            getSeatFromFirestoreByTheaterID(theaterID);
+        } else {
+            getSeatFromFirestoreByTheaterID(TTID);
+        }
         adapter = new SeatAdapter(seatList, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(getBaseContext(), 5));
 
-        getSeatFromFirestoreByTheaterID(theaterID);
+
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,7 +85,36 @@ public class ChooseSeats extends AppCompatActivity {
             }
         });
 
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
+        btnPayment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<Seat> seats = countSeat(seatList);
+                Intent intent = new Intent(getBaseContext(), PaymentDetail.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("Showtime", showtime);
+                bundle.putSerializable("list", (Serializable) seats);
+                bundle.putSerializable("listFull", (Serializable) seatList);
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+            }
+        });
+    }
+    public List<Seat> countSeat(List<Seat> seatList){
+        List<Seat> seats = new ArrayList<>();
+        for (Seat seat : seatList){
+            if(seat.getStatus() == 2){
+                seats.add(seat);
+            }
+        }
+        return seats;
     }
 
     public void getSeatFromFirestoreByTheaterID(String theaterID){

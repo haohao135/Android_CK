@@ -6,7 +6,7 @@ import java.util.Date;
 public class Notifications implements Serializable {
     private String id;
     private String message;
-    private Date dateNotify;
-    private Date timeNotify;
+    private String dateNotify;
+    private String timeNotify;
     private String user_id;
 }

@@ -1,6 +1,9 @@
 package com.example.myapplication.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.activity.ChooseSeats;
+import com.example.myapplication.activity.RequestLogin;
+import com.example.myapplication.fragment.MovieFragment;
 import com.example.myapplication.model.Showtime;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -39,13 +45,31 @@ public class ShowtimeHomeAdapter extends RecyclerView.Adapter<ShowtimeHomeAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Showtime showtime = showtimeList.get(position);
         getMovieNameById(showtime.getMovie_id(), holder);
         getMovieImageById(showtime.getMovie_id(), holder);
         getMoviePriceById(showtime.getMovie_id(), holder);
         holder.time.setText(showtime.getStarTime());
         holder.date.setText(showtime.getShowDate());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(MovieFragment.login_status==false){
+                    Intent intent = new Intent(context, RequestLogin.class);
+                    context.startActivity(intent);
+                } else {
+                    Intent intent = new Intent(context, ChooseSeats.class);
+                    intent.putExtra("theaterID", showtimeList.get(position).getTheater_id());
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("Showtime", showtimeList.get(position));
+                    intent.putExtras(bundle);
+                    context.startActivity(intent);
+                }
+
+            }
+        });
     }
 
     private void getMovieNameById(String id, ViewHolder holder) {

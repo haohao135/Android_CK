@@ -43,9 +43,13 @@ public class ListShowtime extends AppCompatActivity {
         Intent intent = getIntent();
         String movieID= intent.getStringExtra("movieID");
         String theaterID= intent.getStringExtra("theaterID");
-
         showtimeList = new ArrayList<>();
-        loadCorrectDataFromFirestore(movieID,theaterID);
+        Log.e("TAG", movieID + "");
+        if(movieID==null){
+            loadDataFromFirestore(theaterID);
+        } else {
+            loadCorrectDataFromFirestore(movieID,theaterID);
+        }
         adapter = new ShowtimeAdapter(showtimeList, getBaseContext());
         recyclerViewListShowtime.setAdapter(adapter);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getBaseContext(), DividerItemDecoration.VERTICAL);
@@ -75,6 +79,27 @@ public class ListShowtime extends AppCompatActivity {
                     for (QueryDocumentSnapshot document : querySnapshot) {
                         Showtime showtime = document.toObject(Showtime.class);
                         if(showtime.getMovie_id().equals(movieID) && showtime.getTheater_id().equals(theaterID)){
+                            showtimeList.add(showtime);
+                            adapter.notifyDataSetChanged();
+                        }
+                    }
+                }
+            } else {
+                Log.e("Choose showtime", "Lỗi khi lấy danh sách lịch chiếu trên Firestore");
+            }
+        });
+    }
+
+    public void loadDataFromFirestore(String theaterID) {
+        showtimeList.clear();
+        CollectionReference moviesRef = db.collection("showtimes");
+        moviesRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                QuerySnapshot querySnapshot = task.getResult();
+                if (querySnapshot != null) {
+                    for (QueryDocumentSnapshot document : querySnapshot) {
+                        Showtime showtime = document.toObject(Showtime.class);
+                        if(showtime.getTheater_id().equals(theaterID)){
                             showtimeList.add(showtime);
                             adapter.notifyDataSetChanged();
                         }

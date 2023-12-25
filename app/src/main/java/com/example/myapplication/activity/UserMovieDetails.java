@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.fragment.MovieFragment;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener;
@@ -156,9 +157,15 @@ public class UserMovieDetails extends AppCompatActivity {
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), ListTheater.class);
-                intent.putExtra("ID", movie.getId());
-                startActivity(intent);
+                if(MovieFragment.login_status==false){
+                    Intent intent = new Intent(getBaseContext(), RequestLogin.class);
+                    startActivity(intent);
+                }else {
+                    Intent intent = new Intent(getBaseContext(), ListTheater.class);
+                    intent.putExtra("ID", movie.getId());
+                    startActivity(intent);
+                }
+
             }
         });
     }

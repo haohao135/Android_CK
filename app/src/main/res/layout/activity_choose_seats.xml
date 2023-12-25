@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Choose Seats"
+            android:text="@string/chon_ghe"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="25dp">
@@ -88,7 +88,7 @@
             android:layout_height="36sp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text=" Ghế trống    "
+            android:text="@string/ghe_trong"
             android:textColor="@color/red"
             android:textSize="15sp"
             android:textStyle="bold" />
@@ -109,7 +109,7 @@
             android:layout_height="36sp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text=" Ghế đang chọn    "
+            android:text="@string/ghe_dang_chon"
             android:textColor="@color/red"
             android:textSize="15sp"
             android:textStyle="bold" />
@@ -130,7 +130,7 @@
             android:layout_height="36sp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text=" Ghế đã bán  "
+            android:text="@string/ghe_da_ban"
             android:textColor="@color/red"
             android:textSize="15sp"
             android:textStyle="bold" />
@@ -144,7 +144,7 @@
         android:layout_marginTop="84dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="@color/red"
-        android:text="Thanh toán"
+        android:text="@string/thanh_toan"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SeatColorExplain" />
@@ -157,7 +157,7 @@
         android:layout_marginTop="84dp"
         android:background="@drawable/rounded_backgroud1"
         android:backgroundTint="@color/white"
-        android:text="Thoát"
+        android:text="@string/thoat"
         android:textColor="@color/red"
         app:layout_constraintEnd_toStartOf="@+id/btnPayment"
         app:layout_constraintHorizontal_bias="0.0"

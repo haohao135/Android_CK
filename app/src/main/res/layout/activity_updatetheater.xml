@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
-        android:hint="Tên rạp"
+        android:hint="@string/ten_rap"
         app:layout_constraintTop_toBottomOf="@+id/textView23"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -34,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:hint="Địa chỉ"
+        android:hint="@string/dia_chi"
         app:layout_constraintTop_toBottomOf="@+id/updateTheaterName"
         tools:layout_editor_absoluteX="0dp" />
 

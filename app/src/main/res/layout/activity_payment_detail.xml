@@ -11,53 +11,83 @@
         android:id="@+id/textView22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Chi tiết thanh toán"
+        android:text="@string/chi_tiet_hoa_don"
         android:textColor="@color/red"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editText9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Tên người dùng"
+        android:hint="Tên người dùng"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:textColor="@color/red"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+        app:layout_constraintTop_toBottomOf="@+id/textView22">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/BnameUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editText10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tên phim"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:hint="Tên phim"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText9" />
+        app:layout_constraintTop_toBottomOf="@+id/editText9">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/BnameMovie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editText11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ngày chiếu"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:hint="Ngày chiếu"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText10" />
+        app:layout_constraintTop_toBottomOf="@+id/editText10">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/BdateShowtime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editText12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Giờ chiếu"
+        android:hint="Giờ chiếu"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText11" />
+        app:layout_constraintTop_toBottomOf="@+id/editText11">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/BtimeShowtime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editText13"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Thời lượng"
+        android:hint="Thời lượng"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText12" />
+        app:layout_constraintTop_toBottomOf="@+id/editText12">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Bduration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:layout_marginTop="8dp"
@@ -71,10 +101,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Giá vé"
+            android:text="@string/gia_ve"
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/Bprice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -94,10 +125,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Số ghế"
+            android:text="@string/so_ghe"
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/BnumberSeat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -117,11 +149,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tổng tiền"
+            android:text="@string/tong_tieng"
             android:textColor="@color/red"
             android:textSize="30sp" />
 
         <TextView
+            android:id="@+id/BtotalPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -135,23 +168,35 @@
         android:id="@+id/button7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="56dp"
         android:backgroundTint="@color/red"
-        android:text="Thanh toán"
+        android:text="@string/thanh_toan"
         android:textColor="@color/white"
         app:cornerRadius="1dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout16" />
 
     <Button
+        android:id="@+id/Bmomo"
+        android:text="@string/thanh_toan_bang_momo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#b0006d"
+        app:cornerRadius="1dp"
+        app:layout_constraintTop_toBottomOf="@+id/button7"
+        tools:layout_editor_absoluteX="10dp" />
+
+    <Button
+        android:id="@+id/Bback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
         android:backgroundTint="@color/white"
         android:text="@string/thoat"
         android:textColor="@color/red"
         app:cornerRadius="1dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button7"
-        app:strokeColor="#F44336"
-        app:strokeWidth="1dp" />
+        app:strokeColor="#FF5722"
+        app:strokeWidth="2dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
