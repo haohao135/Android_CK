@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.Buy_ticket">
     <FrameLayout
 
@@ -33,11 +34,15 @@
 
         </TextView>
     </FrameLayout>
+
+
     <TextView
-        android:textColor="@color/red"
-        android:textSize="30sp"
-        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/sap_ra_mat" />
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/sap_ra_mat"
+        android:textColor="@color/red"
+        android:textSize="30sp" />
+
+
 </androidx.appcompat.widget.LinearLayoutCompat>
