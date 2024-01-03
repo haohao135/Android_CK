@@ -39,16 +39,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addNameTheater" />
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="150dp"
+    <EditText
+        android:id="@+id/addSeat"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="88dp"
-        android:background="@drawable/rounded_backgroud1"
-        android:backgroundTint="@color/white"
-        android:text="@string/thoat"
-        android:textColor="@color/red"
+        android:layout_marginTop="24dp"
+        android:hint="Số lượng ghế"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addAddressTheater" />
 
@@ -57,11 +53,24 @@
         android:layout_width="150dp"
         android:layout_height="55dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="108dp"
         android:backgroundTint="@color/red"
         android:text="@string/them"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.254"
+        app:layout_constraintHorizontal_bias="0.027"
         app:layout_constraintStart_toEndOf="@+id/button4"
+        app:layout_constraintTop_toBottomOf="@+id/addAddressTheater" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="112dp"
+        android:background="@drawable/rounded_backgroud1"
+        android:backgroundTint="@color/white"
+        android:text="@string/thoat"
+        android:textColor="@color/red"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addAddressTheater" />
 </androidx.constraintlayout.widget.ConstraintLayout>
