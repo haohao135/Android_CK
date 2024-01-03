@@ -1,7 +1,12 @@
 package com.example.myapplication.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -11,7 +16,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.activity.ListTicket;
+import com.example.myapplication.activity.List_movie;
+import com.example.myapplication.activity.UserMovieDetails;
+import com.example.myapplication.fragment.Movie_Manager_Fragment;
+import com.example.myapplication.fragment.Ticket_Manager_Fragment;
 import com.example.myapplication.model.Booking;
+import com.example.myapplication.model.Movie;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -39,11 +50,38 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         getMovieIDByShowtimeId(bookingList.get(position).getShowtime_id(), holder);
         getTotolPriceByPaymentID(bookingList.get(position).getPayment_id(), holder);
         String v = String.valueOf(bookingList.get(position).getDate_booking());
         holder.date.setText(v);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String id = bookingList.get(position).getId();
+                if(!id.equals("")){
+                    ListTicket.clickTicketPosition = id;
+                    goToDetail(bookingList.get(position));
+                }
+            }
+        });
+        holder.itemView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
+            @Override
+            public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+                ListTicket.clickTicketPosition = bookingList.get(position).getId();
+                MenuInflater inflater = new MenuInflater(v.getContext());
+                inflater.inflate(R.menu.menu_context_ticket, menu);
+            }
+        });
+    }
+    private void goToDetail(Booking ticket) {
+        Intent intent = new Intent(context, ListTicket.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Ticket", ticket);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
     }
 
     private void getMovieIDByShowtimeId(String id, ViewHolder holder) {

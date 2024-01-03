@@ -140,7 +140,6 @@ public class Movie_Manager_Fragment extends Fragment {
     public void loadDataFromFirestore() {
         movieList.clear();
         CollectionReference moviesRef = db.collection("movies");
-
         moviesRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 QuerySnapshot querySnapshot = task.getResult();
@@ -151,8 +150,6 @@ public class Movie_Manager_Fragment extends Fragment {
                         adapter.notifyDataSetChanged();
                     }
                 }
-            } else {
-
             }
         });
     }
