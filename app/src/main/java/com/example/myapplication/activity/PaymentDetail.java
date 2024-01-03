@@ -121,9 +121,12 @@ public class PaymentDetail extends AppCompatActivity {
                     public void onSuccess(Void unused) {
                         List<Seat> s1 = (List<Seat>) getIntent().getExtras().get("listFull");
                         updateSeatStatus(s1);
-                        progressDialog.dismiss();
-                        startActivity(new Intent(getBaseContext(), PaymentSuccess.class));
-                        finish();
+                        handler.postDelayed(()-> {
+                            progressDialog.dismiss();
+                            startActivity(new Intent(getBaseContext(), PaymentSuccess.class));
+                            finish();
+                        }, 500);
+
                     }
                 });
             }
@@ -182,7 +185,6 @@ public class PaymentDetail extends AppCompatActivity {
         for (Seat seat : ss) {
             if (seat.getStatus()==2) {
                 seat.setStatus(3);
-                break;
             }
         }
         db.collection("theaters").document(showtime.getTheater_id())

@@ -49,7 +49,7 @@
             android:background="@android:color/transparent"
             android:drawableStart="@drawable/mail"
             android:drawablePadding="8dp"
-            android:text=""
+            android:text="admin@gmail.com"
             android:hint="@string/tai_khoan_email"
             android:padding="8dp" />
 
@@ -74,7 +74,7 @@
             android:drawableStart="@drawable/padlock"
             android:drawablePadding="8dp"
             android:inputType="textPassword"
-            android:text=""
+            android:text="111111"
             android:hint="@string/mat_khau"
             android:padding="8dp"
             tools:layout_editor_absoluteX="55dp"

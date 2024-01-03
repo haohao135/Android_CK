@@ -81,4 +81,5 @@
     <string name="ghe_dang_chon">Ghế đang chọn</string>
     <string name="ghe_da_ban">Ghế đã bán</string>
     <string name="thong_bao">Thông báo</string>
+    <string name="so_luong_ghe">Số lượng ghế</string>
 </resources>

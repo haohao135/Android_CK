@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class AddTheater extends AppCompatActivity {
-    EditText name, address;
+    EditText name, address, seat;
     Button back, save;
     FirebaseFirestore db;
     @SuppressLint("MissingInflatedId")
@@ -34,6 +34,7 @@ public class AddTheater extends AppCompatActivity {
         address = findViewById(R.id.addAddressTheater);
         back = findViewById(R.id.button4);
         save = findViewById(R.id.btnSaveAddTheater);
+        seat = findViewById(R.id.addSeat);
         db = FirebaseFirestore.getInstance();
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,8 +49,10 @@ public class AddTheater extends AppCompatActivity {
                 String tid = String.valueOf(UUID.randomUUID());
                 String ename = name.getText().toString().trim();
                 String eaddress = address.getText().toString().trim();
+                String Eseat = seat.getText().toString().trim();
+                int numSeat = Integer.parseInt(Eseat);
                 List<Seat> seatList = new ArrayList<>();
-                for (int i = 1; i <= 40; i++){
+                for (int i = 1; i <= numSeat; i++){
                     String id = String.valueOf(UUID.randomUUID());
                     Seat seat = new Seat(id, i, 1, tid);
                     seatList.add(seat);
