@@ -56,32 +56,14 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
         String v = String.valueOf(bookingList.get(position).getDate_booking());
         holder.date.setText(v);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String id = bookingList.get(position).getId();
-                if(!id.equals("")){
-                    ListTicket.clickTicketPosition = id;
-                    goToDetail(bookingList.get(position));
-                }
-            }
-        });
         holder.itemView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
             @Override
             public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-                ListTicket.clickTicketPosition = bookingList.get(position).getId();
+                ListTicket.ticketPosition = bookingList.get(position).getId();
                 MenuInflater inflater = new MenuInflater(v.getContext());
                 inflater.inflate(R.menu.menu_context_ticket, menu);
             }
         });
-    }
-    private void goToDetail(Booking ticket) {
-        Intent intent = new Intent(context, ListTicket.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("Ticket", ticket);
-        intent.putExtras(bundle);
-        context.startActivity(intent);
     }
 
     private void getMovieIDByShowtimeId(String id, ViewHolder holder) {

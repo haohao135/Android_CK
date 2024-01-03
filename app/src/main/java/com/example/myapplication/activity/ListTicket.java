@@ -6,11 +6,14 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.adapter.TicketAdapter;
@@ -26,12 +29,12 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class ListTicket extends AppCompatActivity {
-    public static String clickTicketPosition;
     ImageView back;
     RecyclerView recyclerView;
     TicketAdapter adapter;
@@ -65,6 +68,7 @@ public class ListTicket extends AppCompatActivity {
         });
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void loadDataFromFirestore(String id) {
         bookingList.clear();
         CollectionReference moviesRef = db.collection("bookings");
@@ -74,12 +78,11 @@ public class ListTicket extends AppCompatActivity {
                 if (querySnapshot != null) {
                     for (QueryDocumentSnapshot document : querySnapshot) {
                         Booking booking = document.toObject(Booking.class);
-                        if(booking.getUser_id().equals(id)){
+                        if (booking.getUser_id().equals(id)) {
                             bookingList.add(booking);
-                            adapter.notifyDataSetChanged();
                         }
-
                     }
+                    adapter.notifyDataSetChanged(); // Cập nhật adapter sau khi tải dữ liệu mới
                 }
             } else {
                 Log.e("Choose theater", "Lỗi khi lấy danh sách rạp trên Firestore");
@@ -91,15 +94,32 @@ public class ListTicket extends AppCompatActivity {
         if(item.getItemId() == R.id.cancelTicket){
             if(!ticketPosition.equals("null")){
                 for(Booking booking : bookingList){
-                    if(booking.getId() == ticketPosition){
+                    if(booking.getId().equals(ticketPosition)){
                         Date currentdate = new Date();
+                        @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-                          deleteTicketFromFirestore(ticketPosition);
-//                        Intent intent1 = new Intent(getContext(), UpdateShowtime.class);
-//                        Bundle bundle = new Bundle();
-//                        bundle.putSerializable("Showtime", showtime);
-//                        intent1.putExtras(bundle);
-//                        startActivityForResult(intent1, 1002);
+                        @SuppressLint("SimpleDateFormat") String day = new SimpleDateFormat("dd").format(currentdate);
+                        @SuppressLint("SimpleDateFormat") String month = new SimpleDateFormat("MM").format(currentdate);
+                        @SuppressLint("SimpleDateFormat") String year = new SimpleDateFormat("yyyy").format(currentdate);
+                        getDateByShowtimeId(booking.getShowtime_id());
+                        Handler handler = new Handler();
+                        handler.postDelayed(()->{
+                            String[] time = ticketDate.split("/");
+                            int ngay = Integer.parseInt(time[0]);
+                            int thang = Integer.parseInt(time[1]);
+                            int nam = Integer.parseInt(time[2]);
+                            Log.e("TAG", nam+ "haha" );
+                            int ngay2 = Integer.parseInt(day);
+                            int thang2 = Integer.parseInt(month);
+                            int nam2 = Integer.parseInt(year);
+                            if(nam2 <= nam && thang2 <= thang && ngay2 < ngay){
+                                deleteTicketFromFirestore(ticketPosition);
+                                Toast.makeText(this, "Hủy vé thành công", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(this, "Không thể hủy vé vì lịch chiếu sắp bắt đầu", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }, 400);
                     }
                 }
             }
